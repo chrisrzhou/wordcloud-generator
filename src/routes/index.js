@@ -1,19 +1,20 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
-import About from 'views/About';
-import App from 'views/App';
-import Home from 'views/Home';
+import {HOME, INFO} from './paths';
+import Layout from 'components/layout/Layout';
+import Info from 'views/Info';
+import Main from 'views/Main';
 import NotFound from 'views/NotFound';
 
 const Routes = () => (
-  <App>
+  <Layout>
     <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/about" component={About} />
+      <Route path={HOME} exact component={Main} />
+      <Route path={INFO} component={Info} />
       <Route component={NotFound} />
     </Switch>
-  </App>
+  </Layout>
 );
 
 export default Routes;

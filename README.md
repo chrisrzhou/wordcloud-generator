@@ -21,10 +21,10 @@ yarn build
 
 ## Generator Features
 
-* Copy/paste text into the text area or upload a text file.
-* Tweak the wordcloud properties
-* Click on words to highlight words in the text input.
-* Save and share the visualization with your friends!
+* Copy/paste/edit text or upload a text file in the **Text Panel**.
+* Tweak the wordcloud using the **Properties Panel**.
+* Click on the wordcloud words to highlight words in the text input.
+* Save or share the wordcloud with your friends!
 
 ## Word Cloud Features
 
@@ -38,3 +38,57 @@ yarn build
 * Customize tooltips using callback.
 * Customize click actions on words using callback.
 * Set limit of maximum words displayed.
+
+## Personal Motivations
+
+I built this app to practice using the following libraries in building canonical web applications:
+
+* `react`
+* `react-router`
+* `redux`
+* `reselect`
+* `antd`
+
+I also wanted to test out component and redux file/folder organization. I was pretty happy with this folder organization that treated `components` and `store` (data/state) as first class citizens for building React web applications
+
+```
+/components
+  /layout
+  /shared
+  /...
+/constants
+/routes
+  index.js
+  paths.js
+/store
+  /modules
+    /module-1
+      index.js
+      actions.js
+      constants.js
+      reducer.js
+      selectors.js
+    /module-2
+      ...
+    ...
+  index.js
+  reducer.js
+/styles
+  colors.js
+  margins.js
+  ...
+/util
+/views
+  Main.js
+  NotFound.js
+  ...
+index.css
+index.js
+LICENSE
+README.md
+package.json
+.env
+.editorconfig
+.eslintrc
+.gitignore
+```

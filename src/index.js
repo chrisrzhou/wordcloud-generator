@@ -7,9 +7,10 @@ import Routes from 'routes';
 import store from 'store';
 import 'index.css';
 
+// specify basename as 'process.env.PUBLIC_URL' to make gh-pages work (see https://github.com/facebook/create-react-app/issues/1765)
 const Root = () => (
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes />
     </BrowserRouter>
   </Provider>

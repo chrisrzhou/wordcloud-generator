@@ -26,6 +26,7 @@ const styles = {
   content: {
     background: MAIN_BACKGROUND,
     minHeight: 360,
+    overflow: 'auto',
     padding: GUTTER,
   },
 };

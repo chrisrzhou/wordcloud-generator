@@ -1,3 +1,4 @@
+import {Row} from 'antd/lib/grid';
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -30,9 +31,9 @@ const InfoSection = ({title, children}) => (
 
 const Info = () => (
   <div>
-    <Link style={styles.link} to={HOME}>
-      [back]
-    </Link>
+    <Row type="flex" justify="end">
+      <Link to={HOME}>[back]</Link>
+    </Row>
     <InfoSection title="Overview">
       <p>
         This is a modernized React + Redux word cloud generator inspired by the
@@ -70,10 +71,6 @@ const Info = () => (
 const styles = {
   section: {
     paddingBottom: GUTTER,
-  },
-  link: {
-    display: 'flex',
-    justifyContent: 'flex-end',
   },
 };
 

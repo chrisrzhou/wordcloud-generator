@@ -1,15 +1,30 @@
-import Menu from 'antd/lib/menu';
+import {Row} from 'antd/lib/grid';
+import {TextArea} from 'antd/lib/input';
 import React from 'react';
 
+import TextUploader from './TextUploader';
+import {GUTTER} from 'styles/margins';
+
 const TextPanel = () => (
-  <Menu mode="inline" defaultSelectedKeys={['2']}>
-    <Menu.Item key="1">
-      <span className="nav-text">nav 1</span>
-    </Menu.Item>
-    <Menu.Item key="2">
-      <span className="nav-text">nav 2</span>
-    </Menu.Item>
-  </Menu>
+  <div>
+    <TextUploader />
+    <TextArea
+      rows={20}
+      style={styles.textArea}
+      onChange={e => console.log(e.target.value)}
+    />
+    <Row type="flex" justify="end">
+      <a href="#" onClick={() => alert('reset text')}>
+        reset text
+      </a>
+    </Row>
+  </div>
 );
+
+const styles = {
+  textArea: {
+    marginTop: GUTTER,
+  },
+};
 
 export default TextPanel;

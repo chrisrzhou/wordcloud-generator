@@ -2,8 +2,11 @@ import Icon from 'antd/lib/icon';
 import message from 'antd/lib/message';
 import {Dragger} from 'antd/lib/upload';
 import React from 'react';
+import {connect} from 'react-redux';
 
-const TextUploader = () => (
+import text from 'store/modules/text';
+
+const TextUploader = ({onUploadText}) => (
   <Dragger
     accept=".csv, .txt, .js"
     beforeUpload={(file, fileList) => {
@@ -11,7 +14,7 @@ const TextUploader = () => (
         const reader = new FileReader();
         reader.readAsText(file);
         reader.onload = event => {
-          console.log(event.target.result);
+          onUploadText(event.target.result);
           message.success(`${file.name} file uploaded successfully.`);
         };
       }
@@ -26,4 +29,4 @@ const TextUploader = () => (
   </Dragger>
 );
 
-export default TextUploader;
+export default connect(null, {onUploadText: text.actions.upload})(TextUploader);

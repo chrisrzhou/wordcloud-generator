@@ -1,3 +1,4 @@
+import Button from 'antd/lib/button';
 import {Row} from 'antd/lib/grid';
 import React from 'react';
 import {Link} from 'react-router-dom';
@@ -32,7 +33,9 @@ const InfoSection = ({title, children}) => (
 const Info = () => (
   <div>
     <Row type="flex" justify="end">
-      <Link to={HOME}>[back]</Link>
+      <Link to={HOME}>
+        <Button size="small">Back</Button>
+      </Link>
     </Row>
     <InfoSection title="Overview">
       <p>

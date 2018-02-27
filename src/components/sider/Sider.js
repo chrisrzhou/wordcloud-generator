@@ -9,13 +9,13 @@ import SiderHeader from './SiderHeader';
 import Properties from 'components/properties/Properties';
 import TextPanel from 'components/text-panel/TextPanel';
 import {MAIN_BACKGROUND} from 'styles/colors';
-import {GUTTER, SIDER_CONTAINER} from 'styles/margins';
+import {SIDER_CONTAINER} from 'styles/margins';
 
 const {TabPane} = Tabs;
 
 const tabs = [
-  {name: 'Properties', component: Properties},
   {name: 'Text', component: TextPanel},
+  {name: 'Properties', component: Properties},
 ];
 
 const Sider = () => (
@@ -60,10 +60,10 @@ const styles = {
     overflow: 'auto',
   },
   buttons: {
-    padding: GUTTER,
+    padding: SIDER_CONTAINER,
   },
   button: {
-    marginLeft: GUTTER,
+    marginLeft: SIDER_CONTAINER,
   },
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactWordCloud from 'react-wordcloud';
+import ResizeAware from 'react-resize-aware';
 
 const WORD_COUNT_KEY = 'tf';
 const WORD_KEY = 'term';
@@ -11,14 +12,20 @@ const mockWords = [
 ];
 
 const WordCloud = () => (
-  <ReactWordCloud
-    height={450}
-    width={500}
-    words={mockWords}
-    wordCountKey={WORD_COUNT_KEY}
-    wordKey={WORD_KEY}
-    onWordClick={word => console.log(word)}
-  />
+  <ResizeAware>
+    {({width, height}) => {
+      return (
+        <ReactWordCloud
+          height={width * 3 / 4 || 300} // 4:3 ratio
+          width={width || 400}
+          words={mockWords}
+          wordCountKey={WORD_COUNT_KEY}
+          wordKey={WORD_KEY}
+          onWordClick={word => console.log(word)}
+        />
+      );
+    }}
+  </ResizeAware>
 );
 
 export default WordCloud;

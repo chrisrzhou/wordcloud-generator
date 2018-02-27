@@ -21,11 +21,14 @@
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
+    "react-resize-aware": "^2.7.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "react-wordcloud": "https://github.com/chrisrzhou/react-wordcloud.git",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-actions": "^2.2.1",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "eslint-config-fbjs": "^2.0.1",

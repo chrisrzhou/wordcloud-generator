@@ -1,22 +1,29 @@
+import Button from 'antd/lib/button';
 import {Row} from 'antd/lib/grid';
 import {TextArea} from 'antd/lib/input';
 import React from 'react';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
 import TextUploader from './TextUploader';
+import text from 'store/modules/text';
 import {GUTTER} from 'styles/margins';
 
-const TextPanel = () => (
+const {actions, selectors} = text;
+
+const TextPanel = ({text, onEditText, onResetText}) => (
   <div>
     <TextUploader />
     <TextArea
+      value={text}
       rows={20}
       style={styles.textArea}
-      onChange={e => console.log(e.target.value)}
+      onChange={e => onEditText(e.target.value)}
     />
     <Row type="flex" justify="end">
-      <a href="#" onClick={() => alert('reset text')}>
-        reset text
-      </a>
+      <Button size="small" onClick={onResetText}>
+        Reset text
+      </Button>
     </Row>
   </div>
 );
@@ -24,7 +31,16 @@ const TextPanel = () => (
 const styles = {
   textArea: {
     marginTop: GUTTER,
+    marginBottom: 8,
   },
 };
 
-export default TextPanel;
+export default connect(
+  createStructuredSelector({
+    text: selectors.getState,
+  }),
+  {
+    onEditText: actions.edit,
+    onResetText: actions.reset,
+  },
+)(TextPanel);

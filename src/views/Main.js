@@ -2,7 +2,7 @@ import {Col, Row} from 'antd/lib/grid';
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import SavePngButton from 'components/wordcloud/SavePngButton';
+import Download from 'components/wordcloud/Download';
 import SelectedWords from 'components/wordcloud/SelectedWords';
 import Stopwords from 'components/wordcloud/Stopwords';
 import Wordcloud from 'components/wordcloud/Wordcloud';
@@ -13,10 +13,10 @@ const Main = () => (
   <div style={styles.container}>
     <Row align="middle" gutter={GUTTER} justify="end" type="flex">
       <Col>
-        <SavePngButton />
+        <Download />
       </Col>
       <Col>
-        <Link to={INFO}>[info]</Link>
+        <Link to={INFO}>Info</Link>
       </Col>
     </Row>
     <Wordcloud />

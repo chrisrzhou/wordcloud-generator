@@ -1,3 +1,3 @@
-export default (state = 'words', action) => {
+export default (state = 'text', action) => {
   return state;
 };

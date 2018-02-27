@@ -32,7 +32,7 @@ const InfoSection = ({title, children}) => (
 const Info = () => (
   <div>
     <Row type="flex" justify="end">
-      <Link to={HOME}>[back]</Link>
+      <Link to={HOME}>Back</Link>
     </Row>
     <InfoSection title="Overview">
       <p>

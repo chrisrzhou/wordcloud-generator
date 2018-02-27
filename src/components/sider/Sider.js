@@ -14,8 +14,8 @@ import {GUTTER, SIDER_CONTAINER} from 'styles/margins';
 const {TabPane} = Tabs;
 
 const tabs = [
-  {name: 'Properties', component: Properties},
   {name: 'Text', component: TextPanel},
+  {name: 'Properties', component: Properties},
 ];
 
 const Sider = () => (

@@ -6,6 +6,6 @@ import words from 'store/modules/words';
 
 export default combineReducers({
   properties,
-  text,
+  [text.constants._NAME]: text.reducer,
   words,
 });

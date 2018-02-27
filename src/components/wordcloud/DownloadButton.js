@@ -1,10 +1,10 @@
 import Button from 'antd/lib/button';
 import React from 'react';
 
-const Download = () => (
+const DownloadButton = () => (
   <Button size="small" onClick={() => alert('download png')}>
     Download
   </Button>
 );
 
-export default Download;
+export default DownloadButton;

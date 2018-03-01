@@ -9,7 +9,7 @@ import SiderHeader from './SiderHeader';
 import Properties from 'components/properties/Properties';
 import TextPanel from 'components/text-panel/TextPanel';
 import {MAIN_BACKGROUND} from 'styles/colors';
-import {SIDER_CONTAINER} from 'styles/margins';
+import {SIDER_TAB_PANEL_CONTAINER_PADDING} from 'styles/dimensions';
 
 const {TabPane} = Tabs;
 
@@ -53,17 +53,17 @@ const styles = {
     width: '100%',
   },
   tabPane: {
-    padding: SIDER_CONTAINER,
+    padding: SIDER_TAB_PANEL_CONTAINER_PADDING,
   },
   tabs: {
     height: '100%',
     overflow: 'auto',
   },
   buttons: {
-    padding: SIDER_CONTAINER,
+    padding: SIDER_TAB_PANEL_CONTAINER_PADDING,
   },
   button: {
-    marginLeft: SIDER_CONTAINER,
+    marginLeft: SIDER_TAB_PANEL_CONTAINER_PADDING,
   },
 };
 

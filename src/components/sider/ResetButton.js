@@ -1,6 +1,13 @@
 import Button from 'antd/lib/button';
 import React from 'react';
+import {connect} from 'react-redux';
 
-const ResetButton = () => <Button onClick={() => alert('reset')}>Reset</Button>;
+import words from 'store/modules/words';
 
-export default ResetButton;
+const ResetButton = ({onResetAll}) => (
+  <Button onClick={onResetAll}>Reset</Button>
+);
+
+export default connect(null, {
+  onResetAll: words.actions.resetAll,
+})(ResetButton);

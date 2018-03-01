@@ -4,11 +4,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import DownloadButton from 'components/wordcloud/DownloadButton';
+import ExcludedWords from 'components/wordcloud/ExcludedWords';
 import SelectedWords from 'components/wordcloud/SelectedWords';
-import Stopwords from 'components/wordcloud/Stopwords';
 import Wordcloud from 'components/wordcloud/Wordcloud';
 import {INFO} from 'routes/paths';
-import {GUTTER} from 'styles/margins';
+import {GUTTER} from 'styles/dimensions';
 
 const Main = () => (
   <div style={styles.container}>
@@ -24,10 +24,10 @@ const Main = () => (
     </Row>
     <Wordcloud />
     <Row style={styles.row}>
-      <SelectedWords />
+      <ExcludedWords />
     </Row>
     <Row style={styles.row}>
-      <Stopwords />
+      <SelectedWords />
     </Row>
   </div>
 );
@@ -39,6 +39,7 @@ const styles = {
   },
   row: {
     marginBottom: GUTTER,
+    minHeight: 100,
   },
 };
 

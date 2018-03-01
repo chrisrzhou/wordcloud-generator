@@ -1,46 +1,52 @@
 import Button from 'antd/lib/button';
 import {Row} from 'antd/lib/grid';
-import {TextArea} from 'antd/lib/input';
+import Switch from 'antd/lib/switch';
 import React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
+import TextArea from './TextArea';
+import TextPreview from './TextPreview';
 import TextUploader from './TextUploader';
-import text from 'store/modules/text';
-import {GUTTER} from 'styles/margins';
+import words from 'store/modules/words';
+import {GUTTER} from 'styles/dimensions';
 
-const {actions, selectors} = text;
+const {actions, selectors} = words;
 
-const TextPanel = ({text, onEditText, onResetText}) => (
+const TextPanel = ({isEditMode, onResetText, onToggleEditMode}) => (
   <div>
     <TextUploader />
-    <TextArea
-      value={text}
-      rows={20}
-      style={styles.textArea}
-      onChange={e => onEditText(e.target.value)}
-    />
-    <Row type="flex" justify="end">
-      <Button size="small" onClick={onResetText}>
-        Reset text
-      </Button>
+    <Row style={styles.controlPanel} type="flex" justify="space-between">
+      <Switch
+        checkedChildren="edit"
+        unCheckedChildren="preview"
+        checked={isEditMode}
+        onChange={onToggleEditMode}
+      />
+      {isEditMode && (
+        <Button size="small" onClick={onResetText}>
+          Reset text
+        </Button>
+      )}
     </Row>
+    {isEditMode && <TextArea />}
+    {!isEditMode && <TextPreview />}
   </div>
 );
 
 const styles = {
-  textArea: {
+  controlPanel: {
+    height: 32,
     marginTop: GUTTER,
-    marginBottom: 8,
   },
 };
 
 export default connect(
   createStructuredSelector({
-    text: selectors.getState,
+    isEditMode: selectors.getIsEditMode,
   }),
   {
-    onEditText: actions.edit,
-    onResetText: actions.reset,
+    onResetText: actions.resetText,
+    onToggleEditMode: actions.toggleEdit,
   },
 )(TextPanel);

@@ -1,31 +1,28 @@
 import {Item as FormItem} from 'antd/lib/form';
-import Select, {Option} from 'antd/lib/select';
+import Tag from 'antd/lib/tag';
 import React from 'react';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
-const options = [];
-for (let i = 10; i < 36; i++) {
-  options.push(
-    <Option key={i.toString(36) + i}>{i.toString(36) + i + ' (10)'}</Option>,
-  );
-}
+import words from 'store/modules/words';
 
-const SelectedWords = () => (
-  <FormItem
-    help="Selected words are highlighted in the text panel!"
-    label="Selected Words">
-    <Select
-      style={style}
-      mode="multiple"
-      placeholder="add selected words"
-      defaultValue={['a10', 'c12']}
-      onChange={value => alert(value)}>
-      {options}
-    </Select>
+const {actions, selectors} = words;
+
+const SelectedWords = ({selectedWords, onSelectWord}) => (
+  <FormItem label="Selected Words">
+    {selectedWords.map(word => (
+      <Tag key={word} closable onClose={() => onSelectWord(word)}>
+        {word}
+      </Tag>
+    ))}
   </FormItem>
 );
 
-const style = {
-  width: '100%',
-};
-
-export default SelectedWords;
+export default connect(
+  createStructuredSelector({
+    selectedWords: selectors.getSelectedWords,
+  }),
+  {
+    onSelectWord: actions.selectWord,
+  },
+)(SelectedWords);

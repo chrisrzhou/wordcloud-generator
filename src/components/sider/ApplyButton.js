@@ -1,10 +1,15 @@
 import Button from 'antd/lib/button';
 import React from 'react';
+import {connect} from 'react-redux';
 
-const ApplyButton = () => (
-  <Button type="primary" onClick={() => alert('applied')}>
+import words from 'store/modules/words';
+
+const ApplyButton = ({onApplyWords}) => (
+  <Button type="primary" onClick={onApplyWords}>
     Apply
   </Button>
 );
 
-export default ApplyButton;
+export default connect(null, {onApplyWords: words.actions.applyWords})(
+  ApplyButton,
+);

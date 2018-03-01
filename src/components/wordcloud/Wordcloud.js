@@ -1,31 +1,38 @@
 import React from 'react';
-import ReactWordCloud from 'react-wordcloud';
+import {connect} from 'react-redux';
 import ResizeAware from 'react-resize-aware';
+import ReactWordCloud from 'react-wordcloud';
+import {createStructuredSelector} from 'reselect';
 
-const WORD_COUNT_KEY = 'tf';
-const WORD_KEY = 'term';
+import words from 'store/modules/words';
 
-const mockWords = [
-  {term: 'aaaa', tf: 10},
-  {term: 'bbbbb', tf: 5},
-  {term: 'cccc', tf: 3},
-];
+const {actions, constants, selectors} = words;
+const {WORD_COUNT_KEY, WORD_KEY} = constants;
 
-const WordCloud = () => (
+const WordCloud = ({words, onSelectWord}) => (
   <ResizeAware>
-    {({width, height}) => {
+    {({width}) => {
+      const height = Math.min(width / 4 * 3, 600); // 4:3 ratio
       return (
         <ReactWordCloud
-          height={width * 3 / 4 || 300} // 4:3 ratio
+          height={height}
+          maxWords={100}
           width={width || 400}
-          words={mockWords}
+          words={words}
           wordCountKey={WORD_COUNT_KEY}
           wordKey={WORD_KEY}
-          onWordClick={word => console.log(word)}
+          onWordClick={word => onSelectWord(word[WORD_KEY])}
         />
       );
     }}
   </ResizeAware>
 );
 
-export default WordCloud;
+export default connect(
+  createStructuredSelector({
+    words: selectors.getWords,
+  }),
+  {
+    onSelectWord: actions.selectWord,
+  },
+)(WordCloud);

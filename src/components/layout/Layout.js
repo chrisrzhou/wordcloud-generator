@@ -4,7 +4,7 @@ import React from 'react';
 import Footer from './Footer';
 import Sider from 'components/sider/Sider';
 import {MAIN_BACKGROUND} from 'styles/colors';
-import {GUTTER} from 'styles/margins';
+import {GUTTER} from 'styles/dimensions';
 
 const App = ({children}) => (
   <Layout style={styles.app}>

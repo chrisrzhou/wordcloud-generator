@@ -13,7 +13,7 @@ import {
 } from 'constants/links';
 import ExternalLink from 'components/shared/ExternalLink';
 import {HOME} from 'routes/paths';
-import {GUTTER} from 'styles/margins';
+import {GUTTER} from 'styles/dimensions';
 
 const links = [
   {content: 'create-react-app', href: GITHUB_CREATE_REACT_APP},

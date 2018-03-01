@@ -20,6 +20,7 @@
     "gramophone": "^0.0.3",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-highlight-words": "^0.11.0",
     "react-redux": "^5.0.6",
     "react-resize-aware": "^2.7.0",
     "react-router-dom": "^4.2.2",

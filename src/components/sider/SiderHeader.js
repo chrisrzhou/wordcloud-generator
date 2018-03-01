@@ -3,7 +3,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import {HOME} from 'routes/paths';
-import {SIDER_CONTAINER} from 'styles/margins';
+import {SIDER_TAB_PANEL_CONTAINER_PADDING} from 'styles/dimensions';
 
 const SiderHeader = () => (
   <Row>
@@ -14,7 +14,7 @@ const SiderHeader = () => (
 );
 
 const style = {
-  margin: SIDER_CONTAINER,
+  margin: SIDER_TAB_PANEL_CONTAINER_PADDING,
 };
 
 export default SiderHeader;

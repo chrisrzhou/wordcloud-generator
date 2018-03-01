@@ -4,10 +4,11 @@ import {Dragger} from 'antd/lib/upload';
 import React from 'react';
 import {connect} from 'react-redux';
 
-import text from 'store/modules/text';
+import words from 'store/modules/words';
 
 const TextUploader = ({onUploadText}) => (
   <Dragger
+    style={style}
     accept=".csv, .txt, .js"
     beforeUpload={(file, fileList) => {
       if (file) {
@@ -29,4 +30,10 @@ const TextUploader = ({onUploadText}) => (
   </Dragger>
 );
 
-export default connect(null, {onUploadText: text.actions.upload})(TextUploader);
+const style = {
+  height: 100,
+};
+
+export default connect(null, {onUploadText: words.actions.uploadText})(
+  TextUploader,
+);

@@ -4,12 +4,7 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
 import words from 'store/modules/words';
-import {
-  BACKGROUND_WASH,
-  BORDER,
-  MAIN_BACKGROUND,
-  PRIMARY_COLOR,
-} from 'styles/colors';
+import {BACKGROUND_WASH} from 'styles/colors';
 import {GUTTER, SIDER_TEXT_CONTAINER_HEIGHT} from 'styles/dimensions';
 
 const {selectors} = words;

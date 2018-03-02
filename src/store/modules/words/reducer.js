@@ -1,16 +1,15 @@
 import {handleActions} from 'redux-actions';
 
 import {
-  APPLY_WORDS,
   EDIT_TEXT,
   EXCLUDE_WORD,
-  RESET_ALL,
   RESET_TEXT,
   SELECT_WORD,
   TOGGLE_EDIT,
   UPLOAD_TEXT,
   INITIAL_TEXT,
 } from './constants';
+import app from 'store/modules/app';
 import parseWords from 'util/parseWords';
 
 const getInitialState = () => ({
@@ -21,7 +20,7 @@ const getInitialState = () => ({
   words: parseWords(INITIAL_TEXT, []),
 });
 
-const handleApplyWords = (state, action) => ({
+const handleApply = (state, action) => ({
   ...state,
   words: parseWords(state.text, state.excludedWords),
 });
@@ -43,7 +42,7 @@ const handleEditText = (state, {payload}) => ({
   text: payload,
 });
 
-const handleResetAll = (state, action) => getInitialState();
+const handleReset = (state, action) => getInitialState();
 
 const handleResetText = (state, action) => ({
   ...state,
@@ -75,10 +74,10 @@ const handleUploadText = (state, {payload}) => ({
 
 export default handleActions(
   {
-    [APPLY_WORDS]: handleApplyWords,
+    [app.constants.APPLY]: handleApply,
+    [app.constants.RESET]: handleReset,
     [EDIT_TEXT]: handleEditText,
     [EXCLUDE_WORD]: handleExcludeWord,
-    [RESET_ALL]: handleResetAll,
     [RESET_TEXT]: handleResetText,
     [SELECT_WORD]: handleSelectWord,
     [TOGGLE_EDIT]: handleToggleEdit,

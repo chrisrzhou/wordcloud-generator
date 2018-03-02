@@ -2,14 +2,12 @@ import Button from 'antd/lib/button';
 import React from 'react';
 import {connect} from 'react-redux';
 
-import words from 'store/modules/words';
+import app from 'store/modules/app';
 
-const ApplyButton = ({onApplyWords}) => (
-  <Button type="primary" onClick={onApplyWords}>
+const ApplyButton = ({onApply}) => (
+  <Button type="primary" onClick={onApply}>
     Apply
   </Button>
 );
 
-export default connect(null, {onApplyWords: words.actions.applyWords})(
-  ApplyButton,
-);
+export default connect(null, {onApply: app.actions.apply})(ApplyButton);

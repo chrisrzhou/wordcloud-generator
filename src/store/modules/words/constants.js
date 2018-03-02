@@ -1,8 +1,6 @@
 export const _NAME = 'words';
-export const APPLY_WORDS = `${_NAME}/APPLY_WORDS`;
 export const EDIT_TEXT = `${_NAME}/EDIT_TEXT`;
 export const EXCLUDE_WORD = `${_NAME}/EXCLUDE_WORD`;
-export const RESET_ALL = `${_NAME}/RESET_ALL`;
 export const RESET_TEXT = `${_NAME}/RESET_TEXT`;
 export const SELECT_WORD = `${_NAME}/SELECT_WORD`;
 export const TOGGLE_EDIT = `${_NAME}/TOGGLE_EDIT`;

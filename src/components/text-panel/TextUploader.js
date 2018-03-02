@@ -8,7 +8,6 @@ import words from 'store/modules/words';
 
 const TextUploader = ({onUploadText}) => (
   <Dragger
-    style={style}
     accept=".csv, .txt, .js"
     beforeUpload={(file, fileList) => {
       if (file) {
@@ -29,10 +28,6 @@ const TextUploader = ({onUploadText}) => (
     <p className="ant-upload-text">Click or drag file to upload</p>
   </Dragger>
 );
-
-const style = {
-  height: 100,
-};
 
 export default connect(null, {onUploadText: words.actions.uploadText})(
   TextUploader,

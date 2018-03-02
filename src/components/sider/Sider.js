@@ -1,5 +1,5 @@
 import {Col, Row} from 'antd/lib/grid';
-import Layout from 'antd/lib/layout';
+import {Sider} from 'antd/lib/layout';
 import Tabs from 'antd/lib/tabs';
 import React from 'react';
 
@@ -18,8 +18,27 @@ const tabs = [
   {name: 'Properties', component: Properties},
 ];
 
-const Sider = () => (
-  <Layout.Sider breakpoint="lg" collapsedWidth={0} width={340}>
+const styles = {
+  container: {
+    background: MAIN_BACKGROUND,
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+  },
+  tabPane: {
+    padding: SIDER_TAB_PANEL_CONTAINER_PADDING,
+  },
+  tabs: {
+    height: '100%',
+    overflowY: 'auto',
+  },
+  buttons: {
+    padding: SIDER_TAB_PANEL_CONTAINER_PADDING,
+  },
+};
+
+export default () => (
+  <Sider breakpoint="lg" collapsedWidth={0} width={340}>
     <div style={styles.container}>
       <SiderHeader />
       <Tabs style={styles.tabs}>
@@ -32,39 +51,18 @@ const Sider = () => (
           );
         })}
       </Tabs>
-      <Row style={styles.buttons} type="flex" justify="end">
-        <Col style={styles.button}>
+      <Row
+        style={styles.buttons}
+        gutter={SIDER_TAB_PANEL_CONTAINER_PADDING}
+        justify="end"
+        type="flex">
+        <Col>
           <ResetButton />
         </Col>
-        <Col style={styles.button}>
+        <Col>
           <ApplyButton />
         </Col>
       </Row>
     </div>
-  </Layout.Sider>
+  </Sider>
 );
-
-const styles = {
-  container: {
-    background: MAIN_BACKGROUND,
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    width: '100%',
-  },
-  tabPane: {
-    padding: SIDER_TAB_PANEL_CONTAINER_PADDING,
-  },
-  tabs: {
-    height: '100%',
-    overflow: 'auto',
-  },
-  buttons: {
-    padding: SIDER_TAB_PANEL_CONTAINER_PADDING,
-  },
-  button: {
-    marginLeft: SIDER_TAB_PANEL_CONTAINER_PADDING,
-  },
-};
-
-export default Sider;

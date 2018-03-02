@@ -4,20 +4,21 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
 import words from 'store/modules/words';
-import {BACKGROUND_WASH} from 'styles/colors';
+import {TEXT_PREVIEW_BACKGROUND} from 'styles/colors';
 import {GUTTER, SIDER_TEXT_CONTAINER_HEIGHT} from 'styles/dimensions';
 
 const {selectors} = words;
 
-const TextPanel = ({
-  isEditMode,
-  selectedWords,
-  text,
-  onEditText,
-  onResetText,
-  onToggleEditMode,
-}) => (
-  <div className="ant-input" style={styles.textPreview}>
+const style = {
+  background: TEXT_PREVIEW_BACKGROUND,
+  height: SIDER_TEXT_CONTAINER_HEIGHT,
+  marginBottom: GUTTER,
+  overflowY: 'auto',
+  whiteSpace: 'pre-wrap',
+};
+
+const TextPanel = ({selectedWords, text}) => (
+  <div className="ant-input" style={style}>
     <Highlighter
       autoEscape={true}
       highlightClassName="ant-tag ant-tag-blue"
@@ -26,16 +27,6 @@ const TextPanel = ({
     />
   </div>
 );
-
-const styles = {
-  textPreview: {
-    background: BACKGROUND_WASH,
-    height: SIDER_TEXT_CONTAINER_HEIGHT,
-    marginBottom: GUTTER,
-    overflow: 'auto',
-    whiteSpace: 'pre-wrap',
-  },
-};
 
 export default connect(
   createStructuredSelector({

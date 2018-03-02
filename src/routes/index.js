@@ -7,7 +7,7 @@ import Info from 'views/Info';
 import Main from 'views/Main';
 import NotFound from 'views/NotFound';
 
-const Routes = () => (
+export default () => (
   <Layout>
     <Switch>
       <Route path={HOME} exact component={Main} />
@@ -16,5 +16,3 @@ const Routes = () => (
     </Switch>
   </Layout>
 );
-
-export default Routes;

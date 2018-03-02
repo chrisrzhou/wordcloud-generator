@@ -8,18 +8,18 @@ import {GUTTER, SIDER_TEXT_CONTAINER_HEIGHT} from 'styles/dimensions';
 
 const {actions, selectors} = words;
 
-const TextArea = ({text, onEditText}) => (
-  <Input.TextArea
-    value={text}
-    style={style}
-    onChange={e => onEditText(e.target.value)}
-  />
-);
-
 const style = {
   height: SIDER_TEXT_CONTAINER_HEIGHT,
   marginBottom: GUTTER,
 };
+
+const TextArea = ({text, onEditText}) => (
+  <Input.TextArea
+    style={style}
+    value={text}
+    onChange={e => onEditText(e.target.value)}
+  />
+);
 
 export default connect(
   createStructuredSelector({

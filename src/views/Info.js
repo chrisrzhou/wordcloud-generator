@@ -3,6 +3,7 @@ import {Row} from 'antd/lib/grid';
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+import ExternalLink from 'components/shared/ExternalLink';
 import {
   GITHUB_ANT_DESIGN,
   GITHUB_CREATE_REACT_APP,
@@ -11,7 +12,6 @@ import {
   GITHUB_RESELECT,
   ORIGINAL_GENERATOR,
 } from 'constants/links';
-import ExternalLink from 'components/shared/ExternalLink';
 import {HOME} from 'routes/paths';
 import {GUTTER} from 'styles/dimensions';
 
@@ -23,6 +23,12 @@ const links = [
   {content: 'react-wordcloud', href: GITHUB_PROJECT},
 ];
 
+const styles = {
+  section: {
+    paddingBottom: GUTTER,
+  },
+};
+
 const InfoSection = ({title, children}) => (
   <section style={styles.section}>
     <h2>{title}</h2>
@@ -30,8 +36,8 @@ const InfoSection = ({title, children}) => (
   </section>
 );
 
-const Info = () => (
-  <div>
+export default () => (
+  <div style={styles.main}>
     <Row type="flex" justify="end">
       <Link to={HOME}>
         <Button size="small">Back</Button>
@@ -56,7 +62,7 @@ const Info = () => (
         <li>
           Click on the wordcloud words to highlight words in the text input.
         </li>
-        <li>Save or share the wordcloud with your friends!</li>
+        <li>Save and share the wordcloud with your friends!</li>
       </ul>
     </InfoSection>
     <InfoSection title="Libraries">
@@ -70,11 +76,3 @@ const Info = () => (
     </InfoSection>
   </div>
 );
-
-const styles = {
-  section: {
-    paddingBottom: GUTTER,
-  },
-};
-
-export default Info;

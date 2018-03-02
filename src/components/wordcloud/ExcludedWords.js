@@ -1,7 +1,5 @@
-import AutoComplete, {Option} from 'antd/lib/auto-complete';
 import {Item as FormItem} from 'antd/lib/form';
-import Icon from 'antd/lib/icon';
-import Tag from 'antd/lib/tag';
+import Select, {Option} from 'antd/lib/select';
 import React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
@@ -9,62 +7,28 @@ import {createStructuredSelector} from 'reselect';
 import words from 'store/modules/words';
 
 const {actions, constants, selectors} = words;
+const {WORD_KEY} = constants;
 
-class ExcludedWords extends React.PureComponent {
-  state = {
-    editNewTag: false,
-  };
-
-  _editNewTag = () => {
-    this.setState({editNewTag: true});
-  };
-
-  _excludeWord = word => {
-    this.setState({editNewTag: false});
-    this.props.onExcludeWord(word);
-  };
-
-  render() {
-    const {excludedWords, words, onExcludeWord} = this.props;
-    const {editNewTag} = this.state;
-    return (
-      <FormItem label="Excluded Words">
-        {excludedWords.map(word => (
-          <Tag key={word} closable onClose={() => onExcludeWord(word)}>
-            {word}
-          </Tag>
-        ))}
-        {editNewTag && (
-          <AutoComplete
-            allowClear
-            autoFocus
-            style={styles.autoComplete}
-            onSelect={this._excludeWord}
-            placeholder="input here">
-            {words.map(word => {
-              const wordValue = word[constants.WORD_KEY];
-              return <Option key={wordValue}>{wordValue}</Option>;
-            })}
-          </AutoComplete>
-        )}
-        {!editNewTag && (
-          <Tag onClick={this._editNewTag} style={styles.newTag}>
-            <Icon type="plus" /> New Tag
-          </Tag>
-        )}
-      </FormItem>
-    );
-  }
-}
-
-const styles = {
-  autoComplete: {
-    width: 200,
-  },
-  newTag: {
-    borderStyle: 'dashed',
-  },
+const style = {
+  width: '100%',
 };
+
+const ExcludedWords = ({excludedWords, words, onExcludeWord}) => (
+  <FormItem label="Excluded Words">
+    <Select
+      style={style}
+      mode="multiple"
+      placeholder="Please select"
+      value={excludedWords}
+      onDeselect={word => onExcludeWord(word)}
+      onSelect={word => onExcludeWord(word)}>
+      {words.map(word => {
+        const wordValue = word[WORD_KEY];
+        return <Option key={wordValue}>{wordValue}</Option>;
+      })}
+    </Select>
+  </FormItem>
+);
 
 export default connect(
   createStructuredSelector({

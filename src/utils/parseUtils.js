@@ -1,6 +1,6 @@
 import gramophone from 'gramophone';
 
-const parseWords = (text, stopWords = []) => {
+export const parseWords = (text, stopWords = []) => {
   return gramophone.extract(text.toLowerCase(), {
     limit: 1000,
     min: 1,
@@ -10,5 +10,3 @@ const parseWords = (text, stopWords = []) => {
     stopWords,
   });
 };
-
-export default parseWords;

@@ -24,7 +24,7 @@ yarn build
 * Copy/paste/edit text or upload a text file in the **Text Panel**.
 * Tweak the wordcloud using the **Properties Panel**.
 * Click on the wordcloud words to highlight words in the text input.
-* Save or share the wordcloud with your friends!
+* Save and share the wordcloud with your friends!
 
 ## Word Cloud Features
 
@@ -41,15 +41,16 @@ yarn build
 
 ## Personal Motivations
 
-I built this app to practice using the following libraries in building canonical web applications:
+I built this app to practice using the following libraries
 
 * `react`
 * `react-router`
 * `redux`
+* `redux-actions`
 * `reselect`
 * `antd`
 
-I also wanted to test out component and redux file/folder organization. I was pretty happy with this folder organization that treated `components` and `store` (data/state) as first class citizens for building React web applications
+I also wanted to test out component and redux file/folder organization. I was pretty happy with the following folder organization which treats `components` and `store` (data/state) as first-class citizens for building React web applications.
 
 ```
 /components

@@ -19,11 +19,11 @@
     'prettier/prettier': [
       'error',
       {
-	bracketSpacing: false,
-	jsxBracketSameLine: true,
-	singleQuote: true,
-	trailingComma: 'all',
-	useTabs: false,
+        bracketSpacing: false,
+        jsxBracketSameLine: true,
+        singleQuote: true,
+        trailingComma: 'all',
+        useTabs: false,
       },
     ],
   },

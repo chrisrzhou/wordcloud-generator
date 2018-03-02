@@ -3,7 +3,7 @@ import * as d3Selection from 'd3-selection';
 import React from 'react';
 import {saveSvgAsPng} from 'save-svg-as-png';
 
-const DownloadButton = () => (
+export default () => (
   <Button
     size="small"
     onClick={() => {
@@ -12,5 +12,3 @@ const DownloadButton = () => (
     Download
   </Button>
 );
-
-export default DownloadButton;

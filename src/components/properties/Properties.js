@@ -9,7 +9,8 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
 import properties from 'store/modules/properties';
-const {actions, selectors} = properties;
+
+const {actions, constants, selectors} = properties;
 
 const Properties = ({properties, onEdit}) => {
   const {
@@ -29,9 +30,11 @@ const Properties = ({properties, onEdit}) => {
           placeholder="select a font"
           value={fontFamily}
           onChange={value => onEdit({field: 'fontFamily', value})}>
-          <Option value="Times New Roman">Times New Roman</Option>
-          <Option value="Impact">Impact</Option>
-          <Option value="Courier">Courier</Option>
+          {constants.FONTS.map(option => (
+            <Option key={option} value={option}>
+              {option}
+            </Option>
+          ))}
         </Select>
       </FormItem>
       <FormItem label="Displayed Words">
@@ -49,15 +52,6 @@ const Properties = ({properties, onEdit}) => {
           onChange={value => onEdit({field: 'tooltipEnabled', value})}
         />
       </FormItem>
-      <FormItem label="Orientations">
-        <InputNumber
-          max={5}
-          min={0}
-          step={1}
-          value={orientations}
-          onChange={value => onEdit({field: 'orientations', value})}
-        />
-      </FormItem>
       <FormItem label="Orientation Angles">
         <Slider
           marks={{
@@ -70,6 +64,15 @@ const Properties = ({properties, onEdit}) => {
           step={5}
           value={orientationAngles}
           onChange={value => onEdit({field: 'orientationAngles', value})}
+        />
+      </FormItem>
+      <FormItem label="Orientations">
+        <InputNumber
+          max={5}
+          min={0}
+          step={1}
+          value={orientations}
+          onChange={value => onEdit({field: 'orientations', value})}
         />
       </FormItem>
       <FormItem label="Transition Duration">
@@ -89,17 +92,22 @@ const Properties = ({properties, onEdit}) => {
         <RadioGroup
           value={spiral}
           onChange={e => onEdit({field: 'spiral', value: e.target.value})}>
-          <RadioButton value="rectangular">rectangular</RadioButton>
-          <RadioButton value="archimedean">archimedean</RadioButton>
+          {constants.SPIRALS.map(option => (
+            <RadioButton key={option} value={option}>
+              {option}
+            </RadioButton>
+          ))}
         </RadioGroup>
       </FormItem>
       <FormItem label="Word Scale">
         <RadioGroup
           value={scale}
           onChange={e => onEdit({field: 'scale', value: e.target.value})}>
-          <RadioButton value="sqrt">Square Root</RadioButton>
-          <RadioButton value="log">Log</RadioButton>
-          <RadioButton value="linear">Linear</RadioButton>
+          {constants.SCALES.map(option => (
+            <RadioButton key={option} value={option}>
+              {option}
+            </RadioButton>
+          ))}
         </RadioGroup>
       </FormItem>
     </Form>

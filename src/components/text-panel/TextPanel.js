@@ -13,13 +13,20 @@ import {GUTTER} from 'styles/dimensions';
 
 const {actions, selectors} = words;
 
+const styles = {
+  controlPanel: {
+    height: 32,
+    marginTop: GUTTER,
+  },
+};
+
 const TextPanel = ({isEditMode, onResetText, onToggleEditMode}) => (
   <div>
     <TextUploader />
     <Row style={styles.controlPanel} type="flex" justify="space-between">
       <Switch
         checkedChildren="edit"
-        unCheckedChildren="preview"
+        unCheckedChildren="edit"
         checked={isEditMode}
         onChange={onToggleEditMode}
       />
@@ -33,13 +40,6 @@ const TextPanel = ({isEditMode, onResetText, onToggleEditMode}) => (
     {!isEditMode && <TextPreview />}
   </div>
 );
-
-const styles = {
-  controlPanel: {
-    height: 32,
-    marginTop: GUTTER,
-  },
-};
 
 export default connect(
   createStructuredSelector({

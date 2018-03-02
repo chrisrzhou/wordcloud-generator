@@ -1,17 +1,17 @@
 import {handleActions} from 'redux-actions';
 
-import {EDIT} from './constants';
+import {EDIT, FONTS, SCALES, SPIRALS} from './constants';
 import app from 'store/modules/app';
 
 const getInitialState = () => ({
-  fontFamily: 'times new roman',
+  fontFamily: FONTS[0],
   maxWords: 100,
   orientations: 1,
   orientationAngles: [0, 0],
-  scale: 'log',
-  spiral: 'archimedean',
+  scale: SCALES[0],
+  spiral: SPIRALS[0],
   tooltipEnabled: true,
-  transitionDuration: 1000,
+  transitionDuration: 500,
 });
 
 const handleEdit = (state, {payload}) => ({

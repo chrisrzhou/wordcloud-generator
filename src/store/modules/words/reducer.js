@@ -10,7 +10,8 @@ import {
   INITIAL_TEXT,
 } from './constants';
 import app from 'store/modules/app';
-import parseWords from 'util/parseWords';
+import {parseWords} from 'utils/parseUtils';
+import {addRemoveArrayEntry} from 'utils/reducerUtils';
 
 const getInitialState = () => ({
   isEditMode: true,
@@ -25,22 +26,20 @@ const handleApply = (state, action) => ({
   words: parseWords(state.text, state.excludedWords),
 });
 
-const handleExcludeWord = (state, {payload}) => {
-  const {excludedWords} = state;
-  const newExcludedWord = excludedWords.includes(payload)
-    ? excludedWords.filter(word => payload !== word)
-    : [...excludedWords, payload];
-  return {
-    ...state,
-    excludedWords: newExcludedWord,
-    words: parseWords(state.text, newExcludedWord),
-  };
-};
-
 const handleEditText = (state, {payload}) => ({
   ...state,
   text: payload,
 });
+
+const handleExcludeWord = (state, {payload}) => {
+  const excludedWords = addRemoveArrayEntry(state.excludedWords, payload);
+  return {
+    ...state,
+    isEditMode: false,
+    excludedWords,
+    words: parseWords(state.text, excludedWords),
+  };
+};
 
 const handleReset = (state, action) => getInitialState();
 
@@ -49,17 +48,11 @@ const handleResetText = (state, action) => ({
   text: INITIAL_TEXT,
 });
 
-const handleSelectWord = (state, {payload}) => {
-  const {selectedWords} = state;
-  const newSelectedWords = selectedWords.includes(payload)
-    ? selectedWords.filter(word => payload !== word)
-    : [...selectedWords, payload];
-  return {
-    ...state,
-    isEditMode: false,
-    selectedWords: newSelectedWords,
-  };
-};
+const handleSelectWord = (state, {payload}) => ({
+  ...state,
+  isEditMode: false,
+  selectedWords: addRemoveArrayEntry(state.selectedWords, payload),
+});
 
 const handleToggleEdit = (state, action) => ({
   ...state,

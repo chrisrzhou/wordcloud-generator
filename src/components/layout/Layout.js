@@ -10,9 +10,6 @@ const styles = {
   app: {
     height: '100vh',
   },
-  main: {
-    padding: `0 ${GUTTER}px`,
-  },
   content: {
     background: MAIN_BACKGROUND,
     borderRadus: 4,
@@ -25,7 +22,7 @@ const styles = {
 export default ({children}) => (
   <Layout style={styles.app}>
     <Sider />
-    <Layout style={styles.main}>
+    <Layout>
       <Content style={styles.content}>{children}</Content>
       <Footer />
     </Layout>

@@ -1,10 +1,7 @@
-import {Col, Row} from 'antd/lib/grid';
 import {Sider} from 'antd/lib/layout';
 import Tabs from 'antd/lib/tabs';
 import React from 'react';
 
-import ApplyButton from './ApplyButton';
-import ResetButton from './ResetButton';
 import SiderHeader from './SiderHeader';
 import Properties from 'components/properties/Properties';
 import TextPanel from 'components/text-panel/TextPanel';
@@ -32,9 +29,6 @@ const styles = {
     height: '100%',
     overflowY: 'auto',
   },
-  buttons: {
-    padding: SIDER_TAB_PANEL_CONTAINER_PADDING,
-  },
 };
 
 export default () => (
@@ -51,18 +45,6 @@ export default () => (
           );
         })}
       </Tabs>
-      <Row
-        style={styles.buttons}
-        gutter={SIDER_TAB_PANEL_CONTAINER_PADDING}
-        justify="end"
-        type="flex">
-        <Col>
-          <ResetButton />
-        </Col>
-        <Col>
-          <ApplyButton />
-        </Col>
-      </Row>
     </div>
   </Sider>
 );

@@ -40,7 +40,7 @@ export default () => (
   <div style={styles.main}>
     <Row type="flex" justify="end">
       <Link to={HOME}>
-        <Button size="small">Back</Button>
+        <Button icon="arrow-left" shape="circle" size="small" />
       </Link>
     </Row>
     <InfoSection title="Overview">

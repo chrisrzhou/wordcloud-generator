@@ -22,8 +22,9 @@ const WordCloud = ({properties, words, onSelectWord}) => {
   } = properties;
   return (
     <ResizeAware>
-      {({width}) => {
-        const height = Math.min(width / 4 * 3, 600); // 4:3 ratio
+      {size => {
+        const width = size.width || 400; // default width
+        const height = Math.min(width / 4 * 3, 500); // 4:3 ratio
         return (
           <ReactWordCloud
             fontFamily={fontFamily}

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import app from 'store/modules/app';
 
 const ApplyButton = ({onApply}) => (
-  <Button type="primary" onClick={onApply}>
+  <Button size="small" type="primary" onClick={onApply}>
     Apply
   </Button>
 );

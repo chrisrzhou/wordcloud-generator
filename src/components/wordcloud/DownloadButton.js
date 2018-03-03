@@ -5,10 +5,11 @@ import {saveSvgAsPng} from 'save-svg-as-png';
 
 export default () => (
   <Button
+    icon="download"
+    shape="circle"
     size="small"
     onClick={() => {
       saveSvgAsPng(d3Selection.select('svg').node(), 'wordcloud.png');
-    }}>
-    Download
-  </Button>
+    }}
+  />
 );

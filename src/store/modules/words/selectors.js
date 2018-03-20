@@ -1,6 +1,6 @@
-import {_NAME} from './constants';
+import {namespace} from './actions';
 
-const _getState = state => state[_NAME];
+export const _getState = state => state[namespace];
 
 export const getText = state => _getState(state).text;
 

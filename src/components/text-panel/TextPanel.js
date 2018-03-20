@@ -46,7 +46,7 @@ export default connect(
     isEditMode: selectors.getIsEditMode,
   }),
   {
-    onResetText: actions.resetText,
-    onToggleEditMode: actions.toggleEdit,
+    onResetText: actions.creators.resetText,
+    onToggleEditMode: actions.creators.toggleEdit,
   },
 )(TextPanel);

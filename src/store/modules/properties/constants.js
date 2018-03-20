@@ -1,6 +1,3 @@
-export const _NAME = 'properties';
-export const EDIT = `${_NAME}/EDIT`;
-
 export const FONTS = [
   'times new roman',
   'arial',

@@ -21,5 +21,5 @@ const ResetButton = ({onReset}) => (
 );
 
 export default connect(null, {
-  onReset: app.actions.reset,
+  onReset: app.actions.creators.reset,
 })(ResetButton);

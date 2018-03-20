@@ -4,23 +4,17 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import ExternalLink from 'components/shared/ExternalLink';
-import {
-  GITHUB_ANT_DESIGN,
-  GITHUB_CREATE_REACT_APP,
-  GITHUB_PROJECT,
-  GITHUB_REDUX,
-  GITHUB_RESELECT,
-  ORIGINAL_GENERATOR,
-} from 'constants/links';
+import * as links from 'constants/links';
 import {HOME} from 'routes/paths';
 import {GUTTER} from 'styles/dimensions';
 
-const links = [
-  {content: 'create-react-app', href: GITHUB_CREATE_REACT_APP},
-  {content: 'redux', href: GITHUB_REDUX},
-  {content: 'reselect', href: GITHUB_RESELECT},
-  {content: 'ant-design', href: GITHUB_ANT_DESIGN},
-  {content: 'react-wordcloud', href: GITHUB_PROJECT},
+const libraryLinks = [
+  {content: 'create-react-app', href: links.GITHUB_CREATE_REACT_APP},
+  {content: 'redux', href: links.GITHUB_REDUX},
+  {content: 'redux-arc', href: links.GITHUB_REDUX_ARC},
+  {content: 'reselect', href: links.GITHUB_RESELECT},
+  {content: 'ant-design', href: links.GITHUB_ANT_DESIGN},
+  {content: 'react-wordcloud', href: links.GITHUB_PROJECT},
 ];
 
 const styles = {
@@ -47,7 +41,7 @@ export default () => (
       <p>
         This is a modernized React + Redux word cloud generator inspired by the
         original generator created by{' '}
-        <ExternalLink content="Jason Davies" href={ORIGINAL_GENERATOR} />.
+        <ExternalLink content="Jason Davies" href={links.ORIGINAL_GENERATOR} />.
       </p>
     </InfoSection>
     <InfoSection title="How to Use">
@@ -67,7 +61,7 @@ export default () => (
     </InfoSection>
     <InfoSection title="Libraries">
       <ul>
-        {links.map(({content, href}) => (
+        {libraryLinks.map(({content, href}) => (
           <li key={href}>
             <ExternalLink content={<code>{content}</code>} href={href} />
           </li>

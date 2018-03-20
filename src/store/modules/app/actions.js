@@ -1,7 +1,8 @@
-import {createAction} from 'redux-actions';
+import {createActions} from 'redux-arc';
 
-import {APPLY, RESET} from './constants';
+export const namespace = 'app';
 
-export const apply = createAction(APPLY);
-
-export const reset = createAction(RESET);
+export const {creators, types} = createActions(namespace, {
+  apply: null,
+  reset: null,
+});

@@ -1,3 +1,3 @@
-import {_NAME} from './constants';
+import {namespace} from './actions';
 
-export const getProperties = state => state[_NAME];
+export const getProperties = state => state[namespace];

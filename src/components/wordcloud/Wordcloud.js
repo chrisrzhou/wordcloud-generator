@@ -55,6 +55,6 @@ export default connect(
     words: words.selectors.getWords,
   }),
   {
-    onSelectWord: words.actions.selectWord,
+    onSelectWord: words.actions.creators.selectWord,
   },
 )(WordCloud);

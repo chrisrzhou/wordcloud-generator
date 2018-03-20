@@ -1,6 +1,7 @@
-import {handleActions} from 'redux-actions';
+import {createReducers} from 'redux-arc';
 
-import {EDIT, FONTS, SCALES, SPIRALS} from './constants';
+import {types} from './actions';
+import {FONTS, SCALES, SPIRALS} from './constants';
 import app from 'store/modules/app';
 
 const getInitialState = () => ({
@@ -14,17 +15,17 @@ const getInitialState = () => ({
   transitionDuration: 500,
 });
 
-const handleEdit = (state, {payload}) => ({
-  ...state,
-  [payload.field]: payload.value,
-});
+const handleEdit = (state, {payload}) => {
+  const {field, value} = payload;
+  return {
+    ...state,
+    [field]: value,
+  };
+};
 
 const handleReset = (state, action) => getInitialState();
 
-export default handleActions(
-  {
-    [app.constants.RESET]: handleReset,
-    [EDIT]: handleEdit,
-  },
-  getInitialState(),
-);
+export default createReducers(getInitialState(), {
+  [app.actions.types.RESET]: handleReset,
+  [types.EDIT]: handleEdit,
+});

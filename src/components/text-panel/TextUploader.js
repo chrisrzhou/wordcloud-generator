@@ -29,6 +29,6 @@ const TextUploader = ({onUploadText}) => (
   </Dragger>
 );
 
-export default connect(null, {onUploadText: words.actions.uploadText})(
+export default connect(null, {onUploadText: words.actions.creators.uploadText})(
   TextUploader,
 );

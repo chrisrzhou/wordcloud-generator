@@ -26,6 +26,6 @@ export default connect(
     text: selectors.getText,
   }),
   {
-    onEditText: actions.editText,
+    onEditText: actions.creators.editText,
   },
 )(TextArea);

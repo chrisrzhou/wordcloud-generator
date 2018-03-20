@@ -1,5 +1,7 @@
-import {createAction} from 'redux-actions';
+import {createActions} from 'redux-arc';
 
-import {EDIT} from './constants';
+export const namespace = 'properties';
 
-export const edit = createAction(EDIT);
+export const {creators, types} = createActions(namespace, {
+  edit: null,
+});

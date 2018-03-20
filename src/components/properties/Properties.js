@@ -119,6 +119,6 @@ export default connect(
     properties: selectors.getProperties,
   }),
   {
-    onEdit: actions.edit,
+    onEdit: actions.creators.edit,
   },
 )(Properties);

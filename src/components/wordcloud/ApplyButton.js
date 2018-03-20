@@ -10,4 +10,6 @@ const ApplyButton = ({onApply}) => (
   </Button>
 );
 
-export default connect(null, {onApply: app.actions.apply})(ApplyButton);
+export default connect(null, {onApply: app.actions.creators.apply})(
+  ApplyButton,
+);

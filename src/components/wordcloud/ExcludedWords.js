@@ -36,6 +36,6 @@ export default connect(
     words: selectors.getWords,
   }),
   {
-    onExcludeWord: actions.excludeWord,
+    onExcludeWord: actions.creators.excludeWord,
   },
 )(ExcludedWords);

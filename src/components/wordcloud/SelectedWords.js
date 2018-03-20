@@ -36,6 +36,6 @@ export default connect(
     words: selectors.getWords,
   }),
   {
-    onSelectWord: actions.selectWord,
+    onSelectWord: actions.creators.selectWord,
   },
 )(SelectedWords);

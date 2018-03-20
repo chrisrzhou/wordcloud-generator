@@ -1,11 +1,3 @@
-export const _NAME = 'words';
-export const EDIT_TEXT = `${_NAME}/EDIT_TEXT`;
-export const EXCLUDE_WORD = `${_NAME}/EXCLUDE_WORD`;
-export const RESET_TEXT = `${_NAME}/RESET_TEXT`;
-export const SELECT_WORD = `${_NAME}/SELECT_WORD`;
-export const TOGGLE_EDIT = `${_NAME}/TOGGLE_EDIT`;
-export const UPLOAD_TEXT = `${_NAME}/UPLOAD_TEXT`;
-
 export const WORD_COUNT_KEY = 'tf';
 export const WORD_KEY = 'term';
 

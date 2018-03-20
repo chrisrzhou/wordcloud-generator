@@ -1,14 +1,7 @@
-import {handleActions} from 'redux-actions';
+import {createReducers} from 'redux-arc';
 
-import {
-  EDIT_TEXT,
-  EXCLUDE_WORD,
-  RESET_TEXT,
-  SELECT_WORD,
-  TOGGLE_EDIT,
-  UPLOAD_TEXT,
-  INITIAL_TEXT,
-} from './constants';
+import {types} from './actions';
+import {INITIAL_TEXT} from './constants';
 import app from 'store/modules/app';
 import {parseWords} from 'utils/parseUtils';
 import {addRemoveArrayEntry} from 'utils/reducerUtils';
@@ -28,6 +21,8 @@ const handleApply = (state, action) => ({
 
 const handleEditText = (state, {payload}) => ({
   ...state,
+  excludedWords: [],
+  selectedWords: [],
   text: payload,
 });
 
@@ -45,6 +40,8 @@ const handleReset = (state, action) => getInitialState();
 
 const handleResetText = (state, action) => ({
   ...state,
+  excludedWords: [],
+  selectedWords: [],
   text: INITIAL_TEXT,
 });
 
@@ -65,16 +62,13 @@ const handleUploadText = (state, {payload}) => ({
   words: parseWords(payload, state.excludedWords),
 });
 
-export default handleActions(
-  {
-    [app.constants.APPLY]: handleApply,
-    [app.constants.RESET]: handleReset,
-    [EDIT_TEXT]: handleEditText,
-    [EXCLUDE_WORD]: handleExcludeWord,
-    [RESET_TEXT]: handleResetText,
-    [SELECT_WORD]: handleSelectWord,
-    [TOGGLE_EDIT]: handleToggleEdit,
-    [UPLOAD_TEXT]: handleUploadText,
-  },
-  getInitialState(),
-);
+export default createReducers(getInitialState(), {
+  [app.actions.types.APPLY]: handleApply,
+  [app.actions.types.RESET]: handleReset,
+  [types.EDIT_TEXT]: handleEditText,
+  [types.EXCLUDE_WORD]: handleExcludeWord,
+  [types.RESET_TEXT]: handleResetText,
+  [types.SELECT_WORD]: handleSelectWord,
+  [types.TOGGLE_EDIT]: handleToggleEdit,
+  [types.UPLOAD_TEXT]: handleUploadText,
+});

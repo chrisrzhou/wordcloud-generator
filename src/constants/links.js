@@ -5,5 +5,6 @@ export const GITHUB_PROJECT =
   'https://github.com/chrisrzhou/wordcloud-generator/';
 export const GITHUB_REACT = 'https://github.com/facebook/react';
 export const GITHUB_REDUX = 'https://github.com/reactjs/redux';
+export const GITHUB_REDUX_ARC = 'https://github.com/viniciusdacal/redux-arc';
 export const GITHUB_RESELECT = 'https://github.com/reactjs/reselect';
 export const ORIGINAL_GENERATOR = 'https://www.jasondavies.com/wordcloud/';

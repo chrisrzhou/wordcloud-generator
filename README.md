@@ -24,11 +24,12 @@ yarn build
 * Copy/paste/edit text or upload a text file in the **Text Panel**.
 * Tweak the wordcloud using the **Properties Panel**.
 * Click on the wordcloud words to highlight words in the text input.
+* Exclude words from the wordcloud.
 * Save and share the wordcloud with your friends!
 
-## Word Cloud Features
+## Wordcloud Features
 
-[Github](https://github.com/chrisrzhou/react-wordcloud)
+The wordcloud is based on the [react-wordcloud](https://github.com/chrisrzhou/react-wordcloud) that I wrote, which includes the following features:
 
 * Control orientations of words by setting min/max angles.
 * Inherits parent node's height/width or accepts explicit values.
@@ -41,16 +42,16 @@ yarn build
 
 ## Personal Motivations
 
-I built this app to practice using the following libraries
+I built the application to familiarize using the following libraries:
 
 * `react`
 * `react-router`
 * `redux`
-* `redux-actions`
+* `redux-arc`
 * `reselect`
 * `antd`
 
-I also wanted to test out component and redux file/folder organization. I was pretty happy with the following folder organization which treats `components` and `store` (data/state) as first-class citizens for building React web applications.
+I also wanted to test out component and redux file/folder organization. I was pretty happy with the following folder organization which treats `components` and `store` (data/state) as first-class citizens for building React + Redux applications.
 
 ```
 /components

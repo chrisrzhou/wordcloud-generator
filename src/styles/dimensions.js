@@ -1,3 +1,0 @@
-export const GUTTER = 24;
-export const SIDER_TAB_PANEL_CONTAINER_PADDING = 16;
-export const SIDER_TEXT_CONTAINER_HEIGHT = 600;

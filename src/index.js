@@ -1,19 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {BrowserRouter} from 'react-router-dom';
+import { ThemeProvider } from 'theme-ui';
 
-import Routes from 'routes';
-import store from 'store';
-import 'index.css';
+import theme from './theme';
+import App from './components/app';
 
-// specify basename as 'process.env.PUBLIC_URL' to make gh-pages work (see https://github.com/facebook/create-react-app/issues/1765)
-const Root = () => (
-  <Provider store={store}>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Routes />
-    </BrowserRouter>
-  </Provider>
+ReactDOM.render(
+	<React.StrictMode>
+		<ThemeProvider theme={theme}>
+			<App />
+		</ThemeProvider>
+	</React.StrictMode>,
+	document.querySelector('#root'),
 );
-
-ReactDOM.render(<Root />, document.getElementById('root'));

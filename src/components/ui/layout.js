@@ -1,11 +1,10 @@
 import React from 'react';
-import { Box, Container } from 'theme-ui';
+import { Box, Container, Text } from 'theme-ui';
 
 export default function Layout({ children }) {
 	return (
 		<Container
-			px={3}
-			py={2}
+			p={3}
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
@@ -13,11 +12,13 @@ export default function Layout({ children }) {
 			}}>
 			<header>
 				<h1>Wordcloud generator</h1>
-				<small>
-					A modernized wordcloud generator based on the original wordcloud
-					generator by{' '}
-					<a href="https://www.jasondavies.com/wordcloud/">Jason Davies</a>.
-				</small>
+				<Text variant="small">
+					A modern wordcloud generator based on the{' '}
+					<a href="https://www.jasondavies.com/wordcloud/">
+						original wordcloud generator{' '}
+					</a>{' '}
+					by Jason Davies.
+				</Text>
 			</header>
 			<Box
 				as="main"
@@ -25,7 +26,8 @@ export default function Layout({ children }) {
 					display: 'flex',
 					flexDirection: 'column',
 					flex: '1 1 auto',
-				}}>
+				}}
+				py={3}>
 				{children}
 			</Box>
 			<Box
@@ -35,14 +37,14 @@ export default function Layout({ children }) {
 					display: 'flex',
 					justifyContent: 'space-between',
 				}}>
-				<small>
+				<Text variant="small">
 					<a href="https://github.com/chrisrzhou/wordcloud-generator/">
 						Github
 					</a>
-				</small>
-				<small>
+				</Text>
+				<Text variant="small">
 					© 2020 <a href="https://chrisrzhou.io/">Chris Zhou</a>
-				</small>
+				</Text>
 			</Box>
 		</Container>
 	);

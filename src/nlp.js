@@ -1,5 +1,5 @@
-import porterStemmer from 'stemmer';
 import lancasterStemmer from 'lancaster-stemmer';
+import porterStemmer from 'stemmer';
 
 export function tokenizeWords(content, options = {}) {
 	const { stemmer = null, allowNumbers = false, stopwords = [] } = options;

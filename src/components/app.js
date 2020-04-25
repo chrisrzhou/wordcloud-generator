@@ -11,6 +11,7 @@ import {
 	content as initialContent,
 	settings as initialSettings,
 } from '../data';
+import { tokenizeWords } from '../nlp';
 
 const App = () => {
 	const wordcloudRef = useRef();
@@ -22,46 +23,20 @@ const App = () => {
 		saveSvgAsPng(svgElement, 'wordcloud.png');
 	}
 
-	const options = {};
-	const words = [
-		{
-			text: 'mistake',
-			value: 11,
-		},
-		{
-			text: 'thought',
-			value: 16,
-		},
-		{
-			text: 'bad',
-			value: 17,
-		},
-		{
-			text: 'correct',
-			value: 10,
-		},
-		{
-			text: 'day',
-			value: 54,
-		},
-		{
-			text: 'prescription',
-			value: 12,
-		},
-		{
-			text: 'time',
-			value: 77,
-		},
-		{
-			text: 'thing',
-			value: 45,
-		},
-	];
+	const options = {
+		rotations: 5,
+		rotationAngles: [-90, 90],
+		spiral: 'archimedean',
+		scale: 'log',
+		fontFamily: 'impact',
+		fontSizes: [8, 48],
+	};
+	const words = tokenizeWords(content, settings);
 
 	return (
 		<Layout>
 			<Section title="Wordcloud">
-				<Box ref={wordcloudRef}>
+				<Box ref={wordcloudRef} sx={{ minHeight: 400 }}>
 					<ReactWordcloud options={options} words={words} />
 				</Box>
 				<Box mt={3} sx={{ display: 'flex', justifyContent: 'flex-end' }}>

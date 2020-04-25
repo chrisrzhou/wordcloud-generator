@@ -7367,6 +7367,11 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
+lancaster-stemmer@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/lancaster-stemmer/-/lancaster-stemmer-1.0.5.tgz#2aecf12d2191343c32126d3142d47fabb0ca7466"
+  integrity sha512-FRS5Q6jXQpJOYT7kMiCo+bFFutoTHUVlRqliMfpTEsUVR9Y++qxzEdfDvr0tSjeyhUUcQb1PGolxoGUoYmK7Gw==
+
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/last-call-webpack-plugin/-/last-call-webpack-plugin-3.0.0.tgz#9742df0e10e3cf46e5c0381c2de90d3a7a2d7555"
@@ -10992,6 +10997,11 @@ stealthy-require@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
   integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
+
+stemmer@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/stemmer/-/stemmer-1.0.5.tgz#fd89beaf8bff5d04b6643bfffcaed0fc420deec0"
+  integrity sha512-SLq7annzSKRDStasOJJoftCSCzBCKmBmH38jC4fDtCunAqOzpTpIm9zmaHmwNJiZ8gLe9qpVdBVbEG2DC5dE2A==
 
 stream-browserify@^2.0.1:
   version "2.0.2"

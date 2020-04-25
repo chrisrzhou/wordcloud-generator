@@ -29,7 +29,7 @@ export default function Editor({ content: initialContent, onUpdate }) {
 	return (
 		<>
 			<Textarea
-				sx={{ flex: '1 1 auto', minHeight: 200 }}
+				sx={{ flex: '1 1 auto', minHeight: 400 }}
 				value={content}
 				onChange={handleEditContent}
 			/>

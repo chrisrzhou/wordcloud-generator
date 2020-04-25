@@ -38,11 +38,13 @@
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.3",
     "@testing-library/user-event": "^10.0.2",
+    "lancaster-stemmer": "^1.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-wordcloud": "^1.2.2",
     "save-svg-as-png": "^1.4.17",
+    "stemmer": "^1.0.5",
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
@@ -70,7 +72,8 @@
     ],
     "rules": {
       "react/function-component-definition": "off",
-      "react/prop-types": "off"
+      "react/prop-types": "off",
+      "unicorn/no-abusive-eslint-disable": "off"
     }
   }
 }

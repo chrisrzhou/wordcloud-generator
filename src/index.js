@@ -4,6 +4,7 @@ import { ThemeProvider } from 'theme-ui';
 
 import App from './components/app';
 import theme from './theme';
+import './index.css';
 
 ReactDOM.render(
 	<React.StrictMode>

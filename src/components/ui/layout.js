@@ -10,16 +10,29 @@ export default function Layout({ children }) {
 				flexDirection: 'column',
 				minHeight: '100vh',
 			}}>
-			<header>
+			<Box as="header">
 				<h1>Wordcloud generator</h1>
 				<Text variant="small">
-					A modern wordcloud generator based on the{' '}
-					<a href="https://www.jasondavies.com/wordcloud/">
-						original wordcloud generator{' '}
-					</a>{' '}
-					by Jason Davies.
+					<p>
+						A modern wordcloud generator based on the{' '}
+						<a href="https://www.jasondavies.com/wordcloud/">
+							original wordcloud generator{' '}
+						</a>{' '}
+						by Jason Davies.
+					</p>
+					<p>
+						Built using the{' '}
+						<a href="https://github.com/chrisrzhou/react-wordcloud">
+							<code>react-wordcloud</code>
+						</a>{' '}
+						and{' '}
+						<a href="https://github.com/chrisrzhou/unified-doc/tree/master/packages/react-unified-doc">
+							<code>react-unified-doc</code>
+						</a>{' '}
+						packages.
+					</p>
 				</Text>
-			</header>
+			</Box>
 			<Box
 				as="main"
 				sx={{

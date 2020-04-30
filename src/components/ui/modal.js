@@ -34,7 +34,14 @@ export default function Modal({
 	return (
 		<Box
 			bg="backdrop"
-			sx={{ bottom: 0, left: 0, position: 'fixed', right: 0, top: 0 }}>
+			sx={{
+				bottom: 0,
+				left: 0,
+				position: 'fixed',
+				right: 0,
+				top: 0,
+				zIndex: 'modal',
+			}}>
 			<Container
 				ref={modalRef}
 				sx={{
@@ -46,7 +53,13 @@ export default function Modal({
 					<Box pb={3}>
 						<Text as="h2">{title}</Text>
 					</Box>
-					<Box sx={{ flex: '1 1 auto', margin: '0 auto', overflow: 'auto' }}>
+					<Box
+						sx={{
+							flex: '1 1 auto',
+							margin: '0 auto',
+							overflow: 'auto',
+							scrollbarWidth: 'thin',
+						}}>
 						{children}
 					</Box>
 					<Box sx={{ display: 'flex', justifyContent: 'flex-end' }} pt={3}>

@@ -1,14 +1,11 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { saveSvgAsPng } from 'save-svg-as-png';
-import { Box, Button, Checkbox } from 'theme-ui';
-
-import Editor from './editor';
-import FormLabel from './ui/form-label';
-import Layout from './ui/layout';
-import Preview from './preview';
-import Section from './ui/section';
-import Settings from './settings';
 import ReactWordcloud from 'react-wordcloud';
+import { saveSvgAsPng } from 'save-svg-as-png';
+import { Box, Button } from 'theme-ui';
+
+import Content from './content';
+import Settings from './settings';
+import { Layout, Section } from './ui';
 import {
 	content as initialContent,
 	settings as initialSettings,
@@ -25,7 +22,7 @@ const options = {
 	fontSizes: [8, 64],
 };
 
-function App() {
+const App = () => {
 	const wordcloudRef = useRef();
 	const [content, setContent] = useState(initialContent);
 	const [settings, setSettings] = useState(initialSettings);
@@ -72,29 +69,21 @@ function App() {
 				</Box>
 			</Section>
 			<Section
-				grow
-				description="Edit and update content for the wordcloud.  You can also upload any text file."
-				extra={
-					<FormLabel direction="row" htmlFor="content" label="preview">
-						<Checkbox
-							id="content"
-							checked={showPreview}
-							onChange={() => {
-								setShowPreview(!showPreview);
-								window.location.hash = '';
-							}}
-						/>
-					</FormLabel>
-				}
+				description="Edit or upload content for the wordcloud.  You can preview the content and selected word from the wordcloud by checking the checkbox below."
 				title="Content">
-				{showPreview ? (
-					<Preview content={content} selectedWord={selectedWord} />
-				) : (
-					<Editor content={content} onUpdate={setContent} />
-				)}
+				<Content
+					content={content}
+					selectedWord={selectedWord}
+					showPreview={showPreview}
+					onToggleShowPreview={setShowPreview}
+					onUpdateContent={(updatedContent) => {
+						setContent(updatedContent);
+						setSelectedWord();
+					}}
+				/>
 			</Section>
 		</Layout>
 	);
-}
+};
 
 export default App;

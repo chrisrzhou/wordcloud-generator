@@ -4,6 +4,7 @@ export default {
 	colors: {
 		backdrop: 'rgba(0, 0, 0, 0.8)',
 		background: '#fafafa',
+		border: '#dddddd',
 		description: '#777777',
 		muted: '#efefef',
 		primary: '#0b5fff',
@@ -46,6 +47,9 @@ export default {
 		container: 768,
 	},
 	space: [0, 4, 8, 16, 32, 48],
+	zIndices: {
+		modal: 10,
+	},
 	// Variants
 	buttons: {
 		primary: {

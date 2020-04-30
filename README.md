@@ -1,6 +1,8 @@
 # Wordcloud Generator
 
-A modern wordcloud generator based on the original wordcloud generator[original-wordcloud-generator] by Jason Davies.  It is a simple [React app][create-react-app] built with the [`react-wordcloud`][react-wordcloud] package.
+A modern wordcloud generator based on the [original wordcloud generator][original-wordcloud-generator] by Jason Davies.
+
+Built using the [`react-wordcloud`][react-wordcloud] and [`react-unified-doc`][react-unified-doc] packages.
 
 ## Run
 
@@ -19,7 +21,12 @@ Deploy your own Netlify instance and configure your forked repo with the button 
 * Select words from the wordcloud to highlight in the document.
 * Save the wordcloud as an image.
 
+## TODOs
+* Add settings
+* File browser (for the project)
+
 <!-- Links -->
 [original-wordcloud-generator]: https://www.jasondavies.com/wordcloud/
 [create-react-app]: https://github.com/facebook/create-react-app
+[react-unified-doc]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/react-unified-doc
 [react-wordcloud]: https://github.com/chrisrzhou/react-wordcloud

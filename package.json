@@ -36,9 +36,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@mdx-js/react": "^1.5.9",
-    "@testing-library/jest-dom": "^5.5.0",
-    "@testing-library/react": "^10.0.3",
-    "@testing-library/user-event": "^10.0.2",
+    "@unified-doc/react-unified-doc": "^0.1.9",
     "lancaster-stemmer": "^1.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -46,12 +44,13 @@
     "react-wordcloud": "^1.2.2",
     "save-svg-as-png": "^1.4.17",
     "stemmer": "^1.0.5",
-    "theme-ui": "^0.3.1"
+    "theme-ui": "^0.3.1",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "eslint-config-xo-react": "^0.23.0",
     "husky": "^4.2.5",
-    "xo": "^0.29.1"
+    "xo": "^0.30.0"
   },
   "husky": {
     "hooks": {
@@ -74,7 +73,22 @@
     "rules": {
       "react/function-component-definition": "off",
       "react/prop-types": "off",
-      "unicorn/no-abusive-eslint-disable": "off"
+      "import/extensions": [
+        "error",
+        {
+          "pattern": {
+            "css": "always"
+          }
+        }
+      ],
+      "import/no-unassigned-import": [
+        "error",
+        {
+          "allow": [
+            "**/*.css"
+          ]
+        }
+      ]
     }
   }
 }

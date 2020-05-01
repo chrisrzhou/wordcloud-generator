@@ -23,33 +23,40 @@ export function getAnnotations(content, searchTerm) {
 	return annotations;
 }
 
-export function tokenizeWords(content, options = {}) {
-	const { stemmer = null, allowNumbers = false, stopwords = [] } = options;
-	const stopwordsSet = new Set([...defaultStopwords, ...stopwords]);
+export function tokenizeWords(content, settings = {}) {
+	const { stemmer, allowNumbers, stopwordsInput } = settings;
+
+	const stopwords = stopwordsInput
+		.split(',')
+		.map((stopword) => stopword.toLowerCase().trim());
+	const stopwordsSet = new Set(
+		[...defaultStopwords, ...stopwords].map((stopword) =>
+			stopword.toLowerCase(),
+		),
+	);
 
 	const matched = content.match(/\w+/g);
-
 	if (!matched) {
 		return [];
 	}
 
 	const tokens = matched
-		.map((token) => {
-			const lowerCased = token.toLowerCase();
-			switch (stemmer) {
-				case 'porter':
-					return porterStemmer(lowerCased);
-				case 'lancaster':
-					return lancasterStemmer(lowerCased);
-				default:
-					return lowerCased;
-			}
-		})
+		.map((token) => token.toLowerCase())
 		.filter((token) => {
 			const filterByStopwords = !stopwordsSet.has(token);
 			return allowNumbers
 				? filterByStopwords
 				: filterByStopwords && Number.isNaN(Number(token));
+		})
+		.map((token) => {
+			switch (stemmer) {
+				case 'porter':
+					return porterStemmer(token);
+				case 'lancaster':
+					return lancasterStemmer(token);
+				default:
+					return token;
+			}
 		});
 
 	const frequency = {};

@@ -9,6 +9,7 @@ export default function Input({
 	placeholder,
 	type,
 	value,
+	width,
 	onChange,
 }) {
 	return (
@@ -17,6 +18,7 @@ export default function Input({
 			<ThemeUiInput
 				id={id}
 				placeholder={placeholder}
+				sx={{ width }}
 				type={type}
 				value={value}
 				onChange={(event) => onChange(event.target.value)}

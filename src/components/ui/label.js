@@ -1,12 +1,7 @@
 import React from 'react';
 import { Label as ThemeUiLabel } from 'theme-ui';
 
-export default function Label({
-	children,
-	direction = 'column',
-	htmlFor,
-	...rest
-}) {
+export default function Label({ children, direction = 'column', htmlFor }) {
 	return (
 		<ThemeUiLabel
 			htmlFor={htmlFor}
@@ -19,7 +14,7 @@ export default function Label({
 				fontWeight: 'bold',
 				textTransform: 'uppercase',
 			}}
-			{...rest}>
+			my={3}>
 			{children}
 		</ThemeUiLabel>
 	);

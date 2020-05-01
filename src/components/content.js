@@ -14,7 +14,7 @@ const contentTypeOptions = [
 
 const sx = {
 	overflow: 'auto',
-	'-mozTabSize': '2',
+	mozTabSize: '2',
 	scrollbarWidth: 'thin',
 	tabSize: '2',
 	whiteSpace: 'pre-wrap',
@@ -23,17 +23,20 @@ const sx = {
 export default function Content({
 	content: initialContent,
 	selectedWord,
-	showPreview,
-	onToggleShowPreview,
 	onUpdateContent,
 }) {
 	const [content, setContent] = useState(initialContent);
 	const [contentType, setContentType] = useState('html');
+	const [showPreview, setShowPreview] = useState(false);
 
 	const annotations = useMemo(() => getAnnotations(content, selectedWord), [
 		content,
 		selectedWord,
 	]);
+
+	useEffect(() => {
+		setShowPreview(true);
+	}, [selectedWord]);
 
 	useEffect(() => {
 		if (annotations.length > 0) {
@@ -95,7 +98,7 @@ export default function Content({
 						id="preview"
 						label="Preview"
 						value={showPreview}
-						onChange={onToggleShowPreview}
+						onChange={setShowPreview}
 					/>
 				</Box>
 				{showPreview ? (
@@ -124,7 +127,6 @@ export default function Content({
 			<FileInput
 				id="upload-file"
 				label="Upload File"
-				my={3}
 				onChange={handleUploadFile}
 			/>
 			{showPreview ? (

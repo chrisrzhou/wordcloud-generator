@@ -5,42 +5,43 @@ import { saveSvgAsPng } from 'save-svg-as-png';
 import Content from './content';
 import Settings from './settings';
 import { Box, Button, Layout, Section } from './ui';
-import {
-	content as initialContent,
-	settings as initialSettings,
-} from '../data';
+import { content as initialContent } from '../data';
 import { tokenizeWords } from '../nlp';
 
-const options = {
-	deterministic: true,
-	rotations: 5,
-	rotationAngles: [-90, 90],
-	spiral: 'archimedean',
-	scale: 'linear',
-	fontFamily: 'impact',
-	fontSizes: [8, 64],
+export const initialSettings = {
+	content: {
+		allowNumbers: false,
+		stemmer: null,
+		stopwordsInput: '',
+	},
+	wordcloud: {
+		rotations: 5,
+		rotationAngles: [-90, 90],
+		spiral: 'archimedean',
+		scale: 'linear',
+		fontFamily: 'times new roman',
+		fontSizes: [8, 64],
+	},
 };
 
-const App = () => {
+function App() {
 	const wordcloudRef = useRef();
 	const [content, setContent] = useState(initialContent);
 	const [settings, setSettings] = useState(initialSettings);
 	const [selectedWord, setSelectedWord] = useState();
-	const [showPreview, setShowPreview] = useState(false);
 
 	const callbacks = useMemo(
 		() => ({
-			onWordClick: (word) => {
-				setSelectedWord(word.text);
-				setShowPreview(true);
-			},
+			onWordClick: (word) => setSelectedWord(word.text),
 		}),
 		[],
 	);
 
-	const words = useMemo(() => tokenizeWords(content, settings), [
+	const { content: contentSettings, wordcloud: wordcloudSettings } = settings;
+
+	const words = useMemo(() => tokenizeWords(content, contentSettings), [
 		content,
-		settings,
+		contentSettings,
 	]);
 
 	function handleSave() {
@@ -55,7 +56,7 @@ const App = () => {
 				title="Wordcloud">
 				<Box ref={wordcloudRef} sx={{ minHeight: 400 }}>
 					<ReactWordcloud
-						options={options}
+						options={wordcloudSettings}
 						words={words}
 						callbacks={callbacks}
 					/>
@@ -73,8 +74,6 @@ const App = () => {
 				<Content
 					content={content}
 					selectedWord={selectedWord}
-					showPreview={showPreview}
-					onToggleShowPreview={setShowPreview}
 					onUpdateContent={(updatedContent) => {
 						setContent(updatedContent);
 						setSelectedWord();
@@ -83,6 +82,6 @@ const App = () => {
 			</Section>
 		</Layout>
 	);
-};
+}
 
 export default App;

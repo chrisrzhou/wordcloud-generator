@@ -23,7 +23,7 @@ export default function Select({
 					fontSize: 's',
 					width,
 				}}
-				value={value}
+				value={value || ''}
 				onChange={(event) => onChange(event.target.value)}>
 				{options.map(({ label, value }) => (
 					<option key={value} value={value}>

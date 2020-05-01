@@ -3,9 +3,9 @@ import { Input as ThemeUiInput } from 'theme-ui';
 
 import Label from './label';
 
-export default function FileInput({ id, label, onChange, ...rest }) {
+export default function FileInput({ id, label, onChange }) {
 	return (
-		<Label htmlFor={id} {...rest}>
+		<Label htmlFor={id}>
 			{label}
 			<ThemeUiInput id={id} type="file" onChange={onChange} />
 		</Label>

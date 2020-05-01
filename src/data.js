@@ -1,5 +1,3 @@
-export const settings = {};
-
 export const content = `
 In Congress, July 4, 1776.
 

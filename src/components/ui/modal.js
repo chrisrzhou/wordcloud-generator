@@ -61,7 +61,6 @@ export default function Modal({
 					<Box
 						sx={{
 							flex: '1 1 auto',
-							margin: '0 auto',
 							overflow: 'auto',
 							scrollbarWidth: 'thin',
 						}}>

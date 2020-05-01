@@ -1,11 +1,10 @@
 import React, { useMemo, useRef, useState } from 'react';
 import ReactWordcloud from 'react-wordcloud';
 import { saveSvgAsPng } from 'save-svg-as-png';
-import { Box, Button } from 'theme-ui';
 
 import Content from './content';
 import Settings from './settings';
-import { Layout, Section } from './ui';
+import { Box, Button, Layout, Section } from './ui';
 import {
 	content as initialContent,
 	settings as initialSettings,
@@ -69,7 +68,7 @@ const App = () => {
 				</Box>
 			</Section>
 			<Section
-				description="Edit or upload content for the wordcloud.  You can preview the content and selected word from the wordcloud by checking the checkbox below."
+				description="Edit or upload content for the wordcloud.  You can preview the content and selected wordcloud word with the preview checkbox below."
 				title="Content">
 				<Content
 					content={content}

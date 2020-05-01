@@ -1,5 +1,10 @@
 import React, { useRef } from 'react';
-import { Box, Button, Card, Container, Text } from 'theme-ui';
+
+import Box from './box';
+import Button from './button';
+import Card from './card';
+import Container from './container';
+import Text from './text';
 
 import {
 	useClickOutside,

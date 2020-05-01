@@ -1,9 +1,14 @@
 import React from 'react';
-import { Label as ThemeUILabel } from 'theme-ui';
+import { Label as ThemeUiLabel } from 'theme-ui';
 
-export default function Label({ children, direction = 'column', htmlFor }) {
+export default function Label({
+	children,
+	direction = 'column',
+	htmlFor,
+	...rest
+}) {
 	return (
-		<ThemeUILabel
+		<ThemeUiLabel
 			htmlFor={htmlFor}
 			sx={{
 				alignItems: direction === 'row' ? 'center' : 'flex-start',
@@ -13,8 +18,9 @@ export default function Label({ children, direction = 'column', htmlFor }) {
 				fontSize: 'xs',
 				fontWeight: 'bold',
 				textTransform: 'uppercase',
-			}}>
+			}}
+			{...rest}>
 			{children}
-		</ThemeUILabel>
+		</ThemeUiLabel>
 	);
 }

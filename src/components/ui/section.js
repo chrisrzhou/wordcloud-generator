@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Text } from 'theme-ui';
+
+import Box from './box';
+import Text from './text';
 
 export default function Section({ description, title, children }) {
 	return (

@@ -27,8 +27,13 @@ export function tokenizeWords(content, options = {}) {
 	const { stemmer = null, allowNumbers = false, stopwords = [] } = options;
 	const stopwordsSet = new Set([...defaultStopwords, ...stopwords]);
 
-	const tokens = content
-		.match(/\w+/g)
+	const matched = content.match(/\w+/g);
+
+	if (!matched) {
+		return [];
+	}
+
+	const tokens = matched
 		.map((token) => {
 			const lowerCased = token.toLowerCase();
 			switch (stemmer) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select as ThemeUISelect } from 'theme-ui';
+import { Select as ThemeUiSelect } from 'theme-ui';
 
 import Label from './label';
 
@@ -14,7 +14,7 @@ export default function Select({
 	return (
 		<Label htmlFor={id}>
 			{label}
-			<ThemeUISelect
+			<ThemeUiSelect
 				id={id}
 				sx={{
 					borderColor: 'border',
@@ -30,7 +30,7 @@ export default function Select({
 						{label}
 					</option>
 				))}
-			</ThemeUISelect>
+			</ThemeUiSelect>
 		</Label>
 	);
 }

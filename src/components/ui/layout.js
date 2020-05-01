@@ -1,5 +1,8 @@
 import React from 'react';
-import { Box, Container, Text } from 'theme-ui';
+
+import Box from './box';
+import Container from './container';
+import Text from './text';
 
 export default function Layout({ children }) {
 	return (

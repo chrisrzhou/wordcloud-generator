@@ -1,11 +1,10 @@
 import Document from '@unified-doc/react-unified-doc';
 import React, { useMemo, useEffect, useState } from 'react';
-import { Box, Button, Card, Input, Textarea } from 'theme-ui';
 import 'tippy.js/dist/tippy.css';
 import '@unified-doc/react-unified-doc/src/index.css';
 
+import { Box, Button, Card, Checkbox, FileInput, Select, Textarea } from './ui';
 import { getAnnotations } from '../nlp';
-import { Checkbox, Select } from './ui';
 
 const contentTypeOptions = [
 	{ value: 'html', label: 'html' },
@@ -122,7 +121,12 @@ export default function Content({
 					</Box>
 				)}
 			</Box>
-			<Input my={3} type="file" onChange={handleUploadFile} />
+			<FileInput
+				id="upload-file"
+				label="Upload File"
+				my={3}
+				onChange={handleUploadFile}
+			/>
 			{showPreview ? (
 				<Card as={isTextContentType ? 'pre' : undefined} sx={sx}>
 					<Document

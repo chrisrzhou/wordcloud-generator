@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {
 	Button,
 	Checkbox,
+	ColorPicker,
 	FlexLayout,
 	Input,
 	Section,
@@ -66,6 +67,7 @@ export default function Settings({ settings, onApply }) {
 		stopwordsInput,
 	} = draftSettings.content;
 	const {
+		colors,
 		fontFamily,
 		fontSizes,
 		padding,
@@ -95,6 +97,15 @@ export default function Settings({ settings, onApply }) {
 				description="Configure visual properties of the wordcloud."
 				title="Wordcloud">
 				<FlexLayout flexDirection="column">
+					<ColorPicker
+						id="colors"
+						label="Colors"
+						colors={colors}
+						width={inputWidth}
+						onUpdate={(updatedColors) => {
+							handleUpdateSettings('wordcloud', 'colors', updatedColors);
+						}}
+					/>
 					<Input
 						id="font-family"
 						label="Font Family"

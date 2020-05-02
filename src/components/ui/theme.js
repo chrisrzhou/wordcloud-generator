@@ -56,14 +56,14 @@ export default {
 			color: 'background',
 			bg: 'primary',
 			'&:hover:enabled': {
-				opacity: '0.9',
+				opacity: '0.8',
 			},
 		},
 		secondary: {
 			color: 'text',
 			bg: 'muted',
 			'&:hover:enabled': {
-				opacity: '0.9',
+				opacity: '0.8',
 			},
 		},
 	},

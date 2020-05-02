@@ -2,6 +2,7 @@ export { default as Box } from './box';
 export { default as Button } from './button';
 export { default as Card } from './card';
 export { default as Checkbox } from './checkbox';
+export { default as ColorPicker } from './color-picker';
 export { default as Container } from './container';
 export { default as FileInput } from './file-input';
 export { default as FlexLayout } from './flex-layout';

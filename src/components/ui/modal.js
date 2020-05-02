@@ -7,11 +7,7 @@ import Card from './card';
 import Container from './container';
 import Text from './text';
 
-import {
-	useClickOutside,
-	useDisableDocumentScroll,
-	useEscape,
-} from '../../hooks';
+import { useDisableDocumentScroll, useEscape } from '../../hooks';
 
 export default function Modal({
 	children,
@@ -30,7 +26,6 @@ export default function Modal({
 		}
 	}
 
-	useClickOutside(modalRef, handleHide);
 	useDisableDocumentScroll(shown);
 	useEscape(handleHide);
 

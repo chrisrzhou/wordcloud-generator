@@ -1,96 +1,28 @@
 # Wordcloud Generator
 
-This is a modernized React + Redux wordcloud generator inspired by the original wordcloud generator created by [Jason Davies](https://www.jasondavies.com/wordcloud/).
+A modern wordcloud generator based on the [original wordcloud generator][original-wordcloud-generator] by Jason Davies.
+
+Built using the [`react-wordcloud`][react-wordcloud] and [`react-unified-doc`][react-unified-doc] packages.
 
 ## Run
 
-Run locally
-
-```
-yarn install
-yarn start
+Run locally with
+```sh
+yarn && yarn start
 ```
 
-Run in production
+Deploy your own Netlify instance and configure your forked repo with the button below.
 
-```
-yarn install
-yarn build
-# serve /build folder in production
-```
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chrisrzhou/wordcloud-generator)
 
-## Generator Features
+## Features
+* Edit content or upload a text file in the **Content** section.
+* Preview content with associated content type renderers (`html`, `markdown`, `text`).
+* Configure wordcloud and content tokenizers using the **Settings** button.
+* Select words from the wordcloud to preview them in the document.
+* Save the wordcloud as an image.
 
-* Copy/paste/edit text or upload a text file in the **Text Panel**.
-* Tweak the wordcloud using the **Properties Panel**.
-* Click on the wordcloud words to highlight words in the text input.
-* Exclude words from the wordcloud.
-* Save and share the wordcloud with your friends!
-
-## Wordcloud Features
-
-The wordcloud is based on the [react-wordcloud](https://github.com/chrisrzhou/react-wordcloud) that I wrote, which includes the following features:
-
-* Control orientations of words by setting min/max angles.
-* Inherits parent node's height/width or accepts explicit values.
-* Customize colors by passing an array of colors or callback.
-* Customize font family.
-* Customize layout/placement of words.
-* Customize tooltips using callback.
-* Customize click actions on words using callback.
-* Set limit of maximum words displayed.
-
-## Personal Motivations
-
-I built the application to familiarize using the following libraries:
-
-* `react`
-* `react-router`
-* `redux`
-* `redux-arc`
-* `reselect`
-* `antd`
-
-I also wanted to test out component and redux file/folder organization. I was pretty happy with the following folder organization which treats `components` and `store` (data/state) as first-class citizens for building React + Redux applications.
-
-```
-/components
-  /layout
-  /shared
-  /...
-/constants
-/routes
-  index.js
-  paths.js
-/store
-  /modules
-    /module-1
-      index.js
-      actions.js
-      constants.js
-      reducer.js
-      selectors.js
-    /module-2
-      ...
-    ...
-  index.js
-  reducer.js
-/styles
-  colors.js
-  margins.js
-  ...
-/util
-/views
-  Main.js
-  NotFound.js
-  ...
-index.css
-index.js
-LICENSE
-README.md
-package.json
-.env
-.editorconfig
-.eslintrc
-.gitignore
-```
+<!-- Links -->
+[original-wordcloud-generator]: https://www.jasondavies.com/wordcloud/
+[react-unified-doc]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/react-unified-doc
+[react-wordcloud]: https://github.com/chrisrzhou/react-wordcloud

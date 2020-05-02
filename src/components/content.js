@@ -42,52 +42,45 @@ const contentStyles = {
 	whiteSpace: 'pre-wrap',
 };
 
-export default function Content({
-	content: initialContent,
-	selectedWord,
-	onUpdateContent,
-}) {
-	const [content, setContent] = useState(initialContent);
+export default function Content({ content, selectedWord, onUpdate }) {
+	const [draftContent, setDraftContent] = useState(content);
 	const [contentType, setContentType] = useState('html');
 	const [showPreview, setShowPreview] = useState(false);
 
-	const annotations = useMemo(() => getAnnotations(content, selectedWord), [
-		content,
-		selectedWord,
-	]);
+	const annotations = useMemo(() => {
+		return getAnnotations(content, selectedWord);
+	}, [content, selectedWord]);
 
 	useEffect(() => {
 		setShowPreview(true);
 	}, [selectedWord]);
 
 	useEffect(() => {
-		if (annotations.length > 0) {
-			window.location.hash = annotations[0].id;
-		}
+		window.location.hash = annotations.length > 0 ? annotations[0].id : '';
 	}, [annotations]);
 
 	function handleUploadFile(event) {
 		const file = event.target.files[0];
 		file.text().then((fileContent) => {
-			setContent(fileContent);
+			setDraftContent(fileContent);
 			setContentType(getInferredContentType(file));
-			onUpdateContent(fileContent);
+			onUpdate(fileContent);
 		});
 	}
 
 	function handleEditContent(event) {
-		setContent(event.target.value);
+		setDraftContent(event.target.value);
 	}
 
 	function handleResetContent() {
-		setContent(initialContent);
+		setDraftContent(content);
 	}
 
 	function handleUpdateContent() {
-		onUpdateContent(content);
+		onUpdate(draftContent);
 	}
 
-	const disabled = content === initialContent;
+	const disabled = draftContent === content;
 
 	return (
 		<FlexLayout flexDirection="column">
@@ -139,7 +132,7 @@ export default function Content({
 				<Textarea
 					rows={50}
 					sx={contentStyles}
-					value={content}
+					value={draftContent}
 					onChange={handleEditContent}
 				/>
 			)}

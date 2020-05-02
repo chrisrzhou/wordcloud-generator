@@ -11,6 +11,7 @@ export default function Input({
 	value,
 	width,
 	onChange,
+	...rest
 }) {
 	return (
 		<Label htmlFor={id}>
@@ -22,6 +23,7 @@ export default function Input({
 				type={type}
 				value={value}
 				onChange={(event) => onChange(event.target.value)}
+				{...rest}
 			/>
 		</Label>
 	);

@@ -17,16 +17,12 @@ Deploy your own Netlify instance and configure your forked repo with the button 
 
 ## Features
 * Edit content or upload a text file in the **Content** section.
-* Configure wordcloud, stopwords, word tokenizers by using the **Settings** button.
-* Select words from the wordcloud to highlight in the document.
+* Preview content with associated content type renderers (`html`, `markdown`, `text`).
+* Configure wordcloud and content tokenizers using the **Settings** button.
+* Select words from the wordcloud to preview them in the document.
 * Save the wordcloud as an image.
-
-## TODOs
-* Add settings
-* File browser (for the project)
 
 <!-- Links -->
 [original-wordcloud-generator]: https://www.jasondavies.com/wordcloud/
-[create-react-app]: https://github.com/facebook/create-react-app
 [react-unified-doc]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/react-unified-doc
 [react-wordcloud]: https://github.com/chrisrzhou/react-wordcloud

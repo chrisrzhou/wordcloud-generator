@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react';
 import ReactWordcloud from 'react-wordcloud';
 import { saveSvgAsPng } from 'save-svg-as-png';
+import { v4 as uuidv4 } from 'uuid';
 
 import Content from './content';
 import Settings from './settings';
@@ -11,17 +12,23 @@ import { tokenizeWords } from '../nlp';
 export const initialSettings = {
 	content: {
 		allowNumbers: false,
+		maxWords: 100,
 		stemmer: null,
 		stopwordsInput: '',
 	},
 	wordcloud: {
-		deterministic: true,
 		fontFamily: 'times new roman',
 		fontSizes: [8, 64],
-		rotations: 5,
+		padding: 1,
+		rotations: undefined,
 		rotationAngles: [-90, 90],
 		spiral: 'archimedean',
 		scale: 'linear',
+		transitionDuration: 500,
+		// Non-configurable
+		deterministic: true,
+		enableOptimizations: true,
+		enableTooltip: true,
 	},
 };
 
@@ -29,22 +36,39 @@ function App() {
 	const wordcloudRef = useRef();
 	const [content, setContent] = useState(initialContent);
 	const [settings, setSettings] = useState(initialSettings);
-	const [selectedWord, setSelectedWord] = useState();
+	const [selectedWord, setSelectedWord] = useState(null);
+	const [randomSeed, setRandomSeed] = useState(uuidv4());
 
 	const { content: contentSettings, wordcloud: wordcloudSettings } = settings;
 
-	const wordcloudCallbacks = {
-		onWordClick: (word) => setSelectedWord(word.text),
-	};
+	const wordcloudCallbacks = useMemo(
+		() => ({
+			onWordClick: (word) => setSelectedWord(word.text),
+		}),
+		[],
+	);
 
 	const words = useMemo(() => tokenizeWords(content, contentSettings), [
 		content,
 		contentSettings,
 	]);
 
+	const wordcloudOptions = useMemo(
+		() => ({
+			...wordcloudSettings,
+			randomSeed,
+		}),
+		[wordcloudSettings, randomSeed],
+	);
+
 	function handleSave() {
 		const svgElement = wordcloudRef.current.querySelector('svg');
 		saveSvgAsPng(svgElement, 'wordcloud.png');
+	}
+
+	function handleAnimate() {
+		setRandomSeed(uuidv4());
+		setSelectedWord();
 	}
 
 	return (
@@ -54,12 +78,15 @@ function App() {
 				title="Wordcloud">
 				<Box ref={wordcloudRef} sx={{ minHeight: 400 }}>
 					<ReactWordcloud
-						options={wordcloudSettings}
+						options={wordcloudOptions}
 						words={words}
 						callbacks={wordcloudCallbacks}
 					/>
 				</Box>
 				<FlexLayout justifyContent="flex-end">
+					<Button variant="secondary" onClick={handleAnimate}>
+						Animate
+					</Button>
 					<Settings settings={settings} onApply={setSettings} />
 					<Button onClick={handleSave}>Save</Button>
 				</FlexLayout>
@@ -70,9 +97,9 @@ function App() {
 				<Content
 					content={content}
 					selectedWord={selectedWord}
-					onUpdateContent={(updatedContent) => {
+					onUpdate={(updatedContent) => {
 						setContent(updatedContent);
-						setSelectedWord();
+						setSelectedWord(null);
 					}}
 				/>
 			</Section>

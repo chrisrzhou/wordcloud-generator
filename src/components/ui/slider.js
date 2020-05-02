@@ -9,17 +9,21 @@ export default function Slider({
 	max,
 	min = 0,
 	step = 1,
+	unit = '',
 	value,
+	width,
 	onChange,
 }) {
 	return (
 		<Label htmlFor={id}>
-			{label}
+			{label}: {value}
+			{unit}
 			<ThemeUiSlider
 				id={id}
 				max={max}
 				min={min}
 				step={step}
+				sx={{ width }}
 				value={value}
 				onChange={(event) => onChange(event.target.value)}
 			/>

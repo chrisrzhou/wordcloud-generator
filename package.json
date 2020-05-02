@@ -41,7 +41,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "react-wordcloud": "^1.2.2",
+    "react-wordcloud": "^1.2.3",
     "save-svg-as-png": "^1.4.17",
     "stemmer": "^1.0.5",
     "theme-ui": "^0.3.1",

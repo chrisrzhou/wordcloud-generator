@@ -15,6 +15,7 @@ import {
 
 export default function Modal({
 	children,
+	disabled,
 	shown,
 	submitText,
 	title,
@@ -73,7 +74,9 @@ export default function Modal({
 							<Button variant="secondary" onClick={onHide}>
 								Cancel
 							</Button>
-							<Button onClick={onSubmit}>{submitText}</Button>
+							<Button disabled={disabled} onClick={onSubmit}>
+								{submitText}
+							</Button>
 						</FlexLayout>
 					</FlexLayout>
 				</Card>

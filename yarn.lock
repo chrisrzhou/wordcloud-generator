@@ -9996,10 +9996,10 @@ react-scripts@3.4.1:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-wordcloud@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/react-wordcloud/-/react-wordcloud-1.2.2.tgz#152954174673cf561cab0d183f1ea9244d7fec68"
-  integrity sha512-TwM+OwfJIptxDFpB1p9M9LZv3AGVFmYzzz0cmfTcN/XmrxDIJCTo4cqKLjuTBXRr07oPL5yZfNaTiwtGzNoSyw==
+react-wordcloud@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-wordcloud/-/react-wordcloud-1.2.3.tgz#b7e19e13bdce22af18c57c1595bb1d98cd416bde"
+  integrity sha512-pRanqs6w6O0uFisG7KRP7qzs0ae4nYABZ//f8HDKMgZbnN/s7xz7I8zGk843kGdCNUD3/rh7xqC0gNv9/t89LQ==
   dependencies:
     d3-array "^2.4.0"
     d3-cloud "^1.2.5"
@@ -10012,7 +10012,7 @@ react-wordcloud@^1.2.2:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.1"
     seedrandom "^3.0.5"
-    tippy.js "^6.0.1"
+    tippy.js "^6.2.0"
 
 react@^16.13.1:
   version "16.13.1"
@@ -11587,10 +11587,17 @@ timsort@^0.3.0:
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tippy.js@^6.0.1, tippy.js@^6.1.0:
+tippy.js@^6.1.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.2.0.tgz#b6c35dc15a9eb7fe91a562d65469c1a3277f26f6"
   integrity sha512-xb7xq4vSkrhZHvbRx7l8otFL7z2id+U0VPDX+MHXa8B/4PtJ/nvap6/peLHjMk45VmRIvEhF0KFoqviJ6EEtug==
+  dependencies:
+    "@popperjs/core" "^2.3.2"
+
+tippy.js@^6.2.0:
+  version "6.2.3"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.2.3.tgz#0a5db67dc6bd9129233b26052b7ae2b2047fd73e"
+  integrity sha512-MzqHMrr2C0IC8ZUnG5kLQPxonWJ7V+Usqiy2W5b+dCvAfousio0mA85h+Ea5wRq94AQGd8mbFGeciRgkP+F+7w==
   dependencies:
     "@popperjs/core" "^2.3.2"
 

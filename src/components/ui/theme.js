@@ -61,9 +61,9 @@ export default {
 		},
 		secondary: {
 			color: 'text',
-			bg: 'background',
+			bg: 'muted',
 			'&:hover:enabled': {
-				bg: 'muted',
+				opacity: '0.9',
 			},
 		},
 	},

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'theme-ui';
 
 import App from './components/app';
-import theme from './theme';
+import theme from './components/ui/theme';
 import './index.css';
 
 ReactDOM.render(

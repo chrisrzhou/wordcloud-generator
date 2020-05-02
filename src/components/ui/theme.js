@@ -22,18 +22,18 @@ export default {
 		body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
 	},
 	fontSizes: {
-		xs: 12,
-		s: 14,
-		m: 16,
-		l: 20,
-		xl: 32,
+		xs: '12px',
+		s: '14px',
+		m: '16px',
+		l: '20px',
+		xl: '32px',
 	},
 	fontWeights: {
-		body: 400,
-		bold: 700,
+		body: '400',
+		bold: '700',
 	},
 	lineHeights: {
-		body: 1.5,
+		body: '1.5',
 	},
 	radii: {
 		s: '2px',
@@ -44,11 +44,11 @@ export default {
 		card: '0 0 8px rgba(0, 0, 0, 0.125)',
 	},
 	sizes: {
-		container: 768,
+		container: '768px',
 	},
-	space: [0, 4, 8, 16, 32, 48],
+	space: ['0px', '4px', '8px', '16px', '32px', '48px'],
 	zIndices: {
-		modal: 10,
+		modal: '10',
 	},
 	// Variants
 	buttons: {
@@ -56,7 +56,7 @@ export default {
 			color: 'background',
 			bg: 'primary',
 			'&:hover:enabled': {
-				opacity: 0.9,
+				opacity: '0.9',
 			},
 		},
 		secondary: {
@@ -100,7 +100,7 @@ export default {
 				cursor: 'pointer',
 				'&:disabled': {
 					cursor: 'default',
-					opacity: 0.3,
+					opacity: '0.3',
 				},
 			},
 		},

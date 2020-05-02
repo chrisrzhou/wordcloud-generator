@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 
-import { Box, Button, Checkbox, Input, Select, Modal } from './ui';
+import {
+	Button,
+	Checkbox,
+	FlexLayout,
+	Input,
+	Section,
+	Select,
+	Slider,
+	Modal,
+} from './ui';
 
 const stemmerOptions = [
 	{ value: null, label: 'None' },
@@ -48,60 +57,69 @@ export default function Settings({ settings: initialSettings, onApply }) {
 			title="Settings"
 			onHide={handleCancel}
 			onSubmit={handleApplySettings}>
-			<Box as="h3">Wordcloud</Box>
-			<h4>Deterministic (checkbox)</h4>
-			<h4>Colors (picker)</h4>
-			<Input
-				id="font-family"
-				label="Font Family"
-				type="text"
-				value={wordcloudSettings.fontFamily}
-				width={inputWidth}
-				onChange={(value) => {
-					handleUpdateSettings('wordcloud', 'fontFamily', value);
-				}}
-			/>
-			<h4>Font Size (min+max slider)</h4>
-			<h4>Word Padding (slider)</h4>
-			<h4>Enable tooltip (checkbox)</h4>
-			<h4>Rotation Angles (min+max slider)</h4>
-			<h4>Rotations (number input + random checkbox)</h4>
-			<h4>Scale (select)</h4>
-			<h4>Spiral (select)</h4>
-			<h4>Transition Duration (slider)</h4>
-			<Box as="h3" mt={5}>
-				Content
-			</Box>
-			<Checkbox
-				id="all-numbers"
-				label="Allow Numbers"
-				value={contentSettings.allowNumbers}
-				onChange={(value) => {
-					handleUpdateSettings('content', 'allowNumbers', value);
-				}}
-			/>
-			<Input
-				id="stopwords"
-				label="Stopwords"
-				placeholder="provide comma-separated stopwords"
-				type="text"
-				value={contentSettings.stopwordsInput}
-				width={inputWidth}
-				onChange={(value) => {
-					handleUpdateSettings('content', 'stopwordsInput', value);
-				}}
-			/>
-			<Select
-				id="stemmer"
-				label="Stemmer"
-				options={stemmerOptions}
-				value={contentSettings.stemmer}
-				width={inputWidth}
-				onChange={(value) => {
-					handleUpdateSettings('content', 'stemmer', value);
-				}}
-			/>
-			<h4>Max words (number)</h4>
+			<Section
+				description="Configure visual properties of the wordcloud."
+				title="Wordcloud">
+				<FlexLayout flexDirection="column">
+					<h4>Colors (picker)</h4>
+					<Input
+						id="font-family"
+						label="Font Family"
+						type="text"
+						value={wordcloudSettings.fontFamily}
+						width={inputWidth}
+						onChange={(value) => {
+							handleUpdateSettings('wordcloud', 'fontFamily', value);
+						}}
+					/>
+					<FlexLayout>
+						<Slider id="min-font-size" label="Min Font Size" />
+						<Slider id="min-font-size" label="Min Font Size" />
+					</FlexLayout>
+					<h4>Font Size (min+max slider)</h4>
+					<h4>Word Padding (slider)</h4>
+					<h4>Enable tooltip (checkbox)</h4>
+					<h4>Rotation Angles (min+max slider)</h4>
+					<h4>Rotations (number input + random checkbox)</h4>
+					<h4>Scale (select)</h4>
+					<h4>Spiral (select)</h4>
+					<h4>Transition Duration (slider)</h4>
+				</FlexLayout>
+			</Section>
+			<Section description="Control how to tokenize content." title="Content">
+				<FlexLayout flexDirection="column">
+					<Checkbox
+						id="all-numbers"
+						label="Allow Numbers"
+						value={contentSettings.allowNumbers}
+						onChange={(value) => {
+							handleUpdateSettings('content', 'allowNumbers', value);
+						}}
+					/>
+					<Input
+						id="stopwords"
+						label="Stopwords"
+						placeholder="provide comma-separated stopwords"
+						type="text"
+						value={contentSettings.stopwordsInput}
+						width={inputWidth}
+						onChange={(value) => {
+							handleUpdateSettings('content', 'stopwordsInput', value);
+						}}
+					/>
+					<Select
+						id="stemmer"
+						label="Stemmer"
+						options={stemmerOptions}
+						value={contentSettings.stemmer}
+						width={inputWidth}
+						onChange={(value) => {
+							handleUpdateSettings('content', 'stemmer', value);
+						}}
+					/>
+					<h4>Max words (number)</h4>
+				</FlexLayout>
+			</Section>
 		</Modal>
 	);
 

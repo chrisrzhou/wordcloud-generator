@@ -13,8 +13,7 @@ export default function Label({ children, direction = 'column', htmlFor }) {
 				fontSize: 'xs',
 				fontWeight: 'bold',
 				textTransform: 'uppercase',
-			}}
-			my={3}>
+			}}>
 			{children}
 		</ThemeUiLabel>
 	);

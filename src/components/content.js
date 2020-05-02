@@ -3,8 +3,30 @@ import React, { useMemo, useEffect, useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 import '@unified-doc/react-unified-doc/src/index.css';
 
-import { Box, Button, Card, Checkbox, FileInput, Select, Textarea } from './ui';
+import {
+	Button,
+	Card,
+	Checkbox,
+	FileInput,
+	FlexLayout,
+	Select,
+	Textarea,
+} from './ui';
 import { getAnnotations } from '../nlp';
+
+function getInferredContentType(file) {
+	const extension = file.name.split('.').pop();
+	switch (extension) {
+		case 'htm':
+		case 'html':
+			return 'html';
+		case 'md':
+		case 'markdown':
+			return 'markdown';
+		default:
+			return 'text';
+	}
+}
 
 const contentTypeOptions = [
 	{ value: 'html', label: 'html' },
@@ -12,7 +34,7 @@ const contentTypeOptions = [
 	{ value: 'text', label: 'text' },
 ];
 
-const sx = {
+const contentStyles = {
 	overflow: 'auto',
 	mozTabSize: '2',
 	scrollbarWidth: 'thin',
@@ -48,24 +70,8 @@ export default function Content({
 		const file = event.target.files[0];
 		file.text().then((fileContent) => {
 			setContent(fileContent);
+			setContentType(getInferredContentType(file));
 			onUpdateContent(fileContent);
-
-			const extension = file.name.split('.').pop();
-			let inferredContentType;
-			switch (extension) {
-				case 'htm':
-				case 'html':
-					inferredContentType = 'html';
-					break;
-				case 'md':
-				case 'markdown':
-					inferredContentType = 'markdown';
-					break;
-				default:
-					inferredContentType = 'text';
-			}
-
-			setContentType(inferredContentType);
 		});
 	}
 
@@ -82,25 +88,16 @@ export default function Content({
 	}
 
 	const disabled = content === initialContent;
-	const isTextContentType = contentType === 'text';
 
 	return (
-		<>
-			<Box
-				my={3}
-				sx={{
-					alignItems: 'center',
-					display: 'flex',
-					justifyContent: 'space-between',
-				}}>
-				<Box mr={5} sx={{ flex: '0 0 auto' }}>
-					<Checkbox
-						id="preview"
-						label="Preview"
-						value={showPreview}
-						onChange={setShowPreview}
-					/>
-				</Box>
+		<FlexLayout flexDirection="column">
+			<FlexLayout alignItems="center" justifyContent="space-between">
+				<Checkbox
+					id="preview"
+					label="Preview"
+					value={showPreview}
+					onChange={setShowPreview}
+				/>
 				{showPreview ? (
 					<Select
 						id="content-type"
@@ -110,27 +107,28 @@ export default function Content({
 						onChange={setContentType}
 					/>
 				) : (
-					<Box sx={{ flex: '0 0 auto' }}>
+					<FlexLayout>
 						<Button
 							disabled={disabled}
-							ml={3}
 							variant="secondary"
 							onClick={handleResetContent}>
 							Reset
 						</Button>
-						<Button disabled={disabled} ml={3} onClick={handleUpdateContent}>
+						<Button disabled={disabled} onClick={handleUpdateContent}>
 							Update
 						</Button>
-					</Box>
+					</FlexLayout>
 				)}
-			</Box>
+			</FlexLayout>
 			<FileInput
 				id="upload-file"
 				label="Upload File"
 				onChange={handleUploadFile}
 			/>
 			{showPreview ? (
-				<Card as={isTextContentType ? 'pre' : undefined} sx={sx}>
+				<Card
+					as={contentType === 'text' ? 'pre' : undefined}
+					sx={contentStyles}>
 					<Document
 						annotations={annotations}
 						content={content}
@@ -139,12 +137,12 @@ export default function Content({
 				</Card>
 			) : (
 				<Textarea
-					sx={sx}
 					rows={50}
+					sx={contentStyles}
 					value={content}
 					onChange={handleEditContent}
 				/>
 			)}
-		</>
+		</FlexLayout>
 	);
 }

@@ -1,18 +1,13 @@
 import React from 'react';
 
 import Box from './box';
+import FlexLayout from './flex-layout';
 import Container from './container';
 import Text from './text';
 
 export default function Layout({ children }) {
 	return (
-		<Container
-			p={3}
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				minHeight: '100vh',
-			}}>
+		<Container p={3} sx={{ minHeight: '100vh' }}>
 			<Box as="header">
 				<h1>Wordcloud generator</h1>
 				<Text variant="small">
@@ -36,23 +31,8 @@ export default function Layout({ children }) {
 					</p>
 				</Text>
 			</Box>
-			<Box
-				as="main"
-				sx={{
-					display: 'flex',
-					flexDirection: 'column',
-					flex: '1 1 auto',
-				}}
-				py={3}>
-				{children}
-			</Box>
-			<Box
-				as="footer"
-				sx={{
-					alignItems: 'center',
-					display: 'flex',
-					justifyContent: 'space-between',
-				}}>
+			<Box as="main">{children}</Box>
+			<FlexLayout as="footer" justifyContent="space-between">
 				<Text variant="small">
 					<a href="https://github.com/chrisrzhou/wordcloud-generator/">
 						Github
@@ -61,7 +41,7 @@ export default function Layout({ children }) {
 				<Text variant="small">
 					© 2020 <a href="https://chrisrzhou.io/">Chris Zhou</a>
 				</Text>
-			</Box>
+			</FlexLayout>
 		</Container>
 	);
 }

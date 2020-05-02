@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 
 import Box from './box';
 import Button from './button';
+import FlexLayout from './flex-layout';
 import Card from './card';
 import Container from './container';
 import Text from './text';
@@ -54,26 +55,27 @@ export default function Modal({
 					overflow: 'hidden',
 					transform: 'translateY(10vh)',
 				}}>
-				<Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-					<Box pb={3}>
+				<Card sx={{ height: '100%' }}>
+					<FlexLayout
+						flexDirection="column"
+						justifyContent="space-between"
+						sx={{ height: '100%' }}>
 						<Text as="h2">{title}</Text>
-					</Box>
-					<Box
-						sx={{
-							flex: '1 1 auto',
-							overflow: 'auto',
-							scrollbarWidth: 'thin',
-						}}>
-						{children}
-					</Box>
-					<Box sx={{ display: 'flex', justifyContent: 'flex-end' }} pt={3}>
-						<Button variant="secondary" onClick={onHide}>
-							Cancel
-						</Button>
-						<Button ml={3} onClick={onSubmit}>
-							{submitText}
-						</Button>
-					</Box>
+						<Box
+							sx={{
+								flex: '1 1 auto',
+								overflow: 'auto',
+								scrollbarWidth: 'thin',
+							}}>
+							{children}
+						</Box>
+						<FlexLayout justifyContent="flex-end">
+							<Button variant="secondary" onClick={onHide}>
+								Cancel
+							</Button>
+							<Button onClick={onSubmit}>{submitText}</Button>
+						</FlexLayout>
+					</FlexLayout>
 				</Card>
 			</Container>
 		</Box>

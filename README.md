@@ -11,6 +11,26 @@ Run locally with
 yarn && yarn start
 ```
 
+#### Run locally using Docker
+
+Both Production ready sample dockerfile and Development version of dockers files were included.
+
+Production ready sample of docker file includes nginx server as a proxy layer.
+
+Simply run the production ready by execution below and you should be able to access the application by http://localhost (As nginx server defaul port was set to serve on 80) 
+
+```
+docker-compose  up -d --build
+```
+
+For just development version without including ngingx etc.. server , pls use bellow commands and you would be able access application using http://localhost:3000/
+```
+$ docker build -f Dockerfile.Dev . -t sdontireddy/worldcloud-generator
+
+$ docker run -it -p 3000:3000 sdontireddy/worldcloud-generator
+$ 
+```
+
 Deploy your own Netlify instance and configure your forked repo with the button below.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chrisrzhou/wordcloud-generator)

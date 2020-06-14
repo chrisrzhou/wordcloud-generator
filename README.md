@@ -23,7 +23,8 @@ Simply run the production ready by execution below and you should be able to acc
 docker-compose  up -d --build
 ```
 
-For just development version without including ngingx etc.. server , pls use bellow commands and you would be able access application using http://localhost:3000/
+For just development version without including nginx etc.. server , pls use below commands and you would be able access application using http://localhost:3000/
+
 ```
 $ docker build -f Dockerfile.Dev . -t sdontireddy/worldcloud-generator
 

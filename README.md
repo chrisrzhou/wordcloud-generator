@@ -29,7 +29,6 @@ For just development version without including nginx etc.. server , pls use belo
 $ docker build -f Dockerfile.Dev . -t sdontireddy/worldcloud-generator
 
 $ docker run -it -p 3000:3000 sdontireddy/worldcloud-generator
-$ 
 ```
 
 Deploy your own Netlify instance and configure your forked repo with the button below.

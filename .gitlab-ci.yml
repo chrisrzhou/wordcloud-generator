@@ -1,0 +1,38 @@
+stages:
+    - build
+    - test
+    - publish
+
+variables:
+    no_proxy:""
+    BASH_ENV: ".bashrc"
+    TERM: "dumb"
+
+.common_script: &common_script
+before_script:
+    - |
+    touch $BASH_ENV
+    cat > $BASH_ENV << EOF
+    echo "common_script"
+
+.build:
+    stage: build
+    <<: *common_script
+    script:
+        - |
+            echo "------Build-----------""
+
+test:simple-tests:
+    stage: test
+    <<: *common_script
+    script:
+        - |
+            echo "-----------------------------Test-----------------------------"
+
+publish:PublishTOAws:
+    stage: publish
+    <<: *common_script
+    script:
+        - |
+            echo "-----------------------------Publish-----------------------------"
+    

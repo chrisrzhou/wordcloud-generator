@@ -6,14 +6,17 @@ stages:
 variables:
 
 .commonscript: &common_script
-     image: ruby:2.6
+     tags: 
+        -  docker
+     image: qmarketing/docker-compose:latest
 
 
 Build:build:
     stage: build
     script:
         - echo "------Build-----------"
-        - docker-compose build
+        - docker -version
+        - docker-compose -version
 test:simple-tests:
     stage: test
     script:
@@ -26,6 +29,3 @@ publish:PublishTOAws:
     script:
         - |
             echo "-----------------------------Publish-----------------------------"
-    
-
-    

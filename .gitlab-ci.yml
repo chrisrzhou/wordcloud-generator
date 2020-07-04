@@ -12,7 +12,8 @@ variables:
 Build:build:
     stage: build
     script:
-        - echo "------Build-----------""
+        - echo "------Build-----------"
+        - docker-compose build
 test:simple-tests:
     stage: test
     script:

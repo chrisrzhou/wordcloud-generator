@@ -4,27 +4,17 @@ stages:
     - publish
 
 variables:
-    no_proxy:""
-    BASH_ENV: ".bashrc"
-    TERM: "dumb"
 
-.common_script: &common_script
-before_script:
-    - |
-    touch $BASH_ENV
-    cat > $BASH_ENV << EOF
-    echo "common_script"
+.commonscript: &common_script
+     image: ruby:2.6
 
-.build:
+
+Build:build:
     stage: build
-    <<: *common_script
     script:
-        - |
-            echo "------Build-----------""
-
+        - echo "------Build-----------""
 test:simple-tests:
     stage: test
-    <<: *common_script
     script:
         - |
             echo "-----------------------------Test-----------------------------"
@@ -35,4 +25,6 @@ publish:PublishTOAws:
     script:
         - |
             echo "-----------------------------Publish-----------------------------"
+    
+
     

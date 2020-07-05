@@ -8,15 +8,34 @@ variables:
 .commonscript: &common_script
      tags: 
         -  docker
-     image: qmarketing/docker-compose:latest
+image:
+  name: docker/compose:latest
+  entrypoint: ["/bin/sh", "-c"]
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
+before_script:
+  - docker version
+  - docker-compose version
+
 
 
 Build:build:
     stage: build
     script:
-        - echo "------Build-----------"
-        - docker -version
-        - docker-compose -version
+        - echo "------Build-Start----------"
+        - docker-compose build
+         # Log in to the docker CLI
+        - echo "$DOCKER_HUB_ACCESS_KEY" | docker login -u "$DOCKER_ID" --password-stdin
+         # Take those images and push them to docker hub
+        - docker push sdontireddy/wordcloudgenerator:latest
+        - echo "------Build-Done----------"
+        
 test:simple-tests:
     stage: test
     script:

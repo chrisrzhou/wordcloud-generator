@@ -1,3 +1,1 @@
-import { Text as ThemeUiText } from 'theme-ui';
-
-export default ThemeUiText;
+export { Text as default } from 'theme-ui';

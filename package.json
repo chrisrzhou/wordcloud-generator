@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "wordcloud-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern wordcloud generator based on the original wordcloud generator by Jason Davies",
   "keywords": [
     "wordcloud",
@@ -9,7 +9,8 @@
     "visualization",
     "d3",
     "nlp",
-    "create-react-app"
+    "create-react-app",
+    "unified-doc"
   ],
   "author": "Chris Zhou <chrisrzhou@pm.me>",
   "license": "MIT",
@@ -36,26 +37,28 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@mdx-js/react": "^1.5.9",
-    "@unified-doc/react-unified-doc": "^0.1.9",
     "lancaster-stemmer": "^1.0.5",
     "react": "^16.13.1",
     "react-color": "^2.18.0",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.3",
     "react-wordcloud": "^1.2.3",
+    "rehype-highlight": "^4.0.0",
+    "rehype-react": "^6.1.0",
     "save-svg-as-png": "^1.4.17",
     "stemmer": "^1.0.5",
     "theme-ui": "^0.3.1",
+    "unified-doc": "^3.3.1",
     "uuid": "^8.0.0"
   },
   "devDependencies": {
     "eslint-config-xo-react": "^0.23.0",
     "husky": "^4.2.5",
-    "xo": "^0.30.0"
+    "xo": "^0.33.1"
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn lint && yarn build"
+      "pre-push": "npm run lint; npm run build"
     }
   },
   "prettier": {
@@ -72,24 +75,12 @@
       "xo-react"
     ],
     "rules": {
+      "new-cap": "off",
       "react/function-component-definition": "off",
       "react/prop-types": "off",
-      "import/extensions": [
-        "error",
-        {
-          "pattern": {
-            "css": "always"
-          }
-        }
-      ],
-      "import/no-unassigned-import": [
-        "error",
-        {
-          "allow": [
-            "**/*.css"
-          ]
-        }
-      ]
+      "import/extensions": "off",
+      "import/no-anonymous-default-export": "off",
+      "import/no-unassigned-import": "off"
     }
   }
 }

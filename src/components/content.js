@@ -1,141 +1,106 @@
-import Document from '@unified-doc/react-unified-doc';
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { createElement, useEffect, useMemo, useState } from 'react';
+import highlight from 'rehype-highlight';
+import rehype2react from 'rehype-react';
+import Doc from 'unified-doc';
+import { v4 as uuidv4 } from 'uuid';
+
 import 'tippy.js/dist/tippy.css';
-import '@unified-doc/react-unified-doc/src/index.css';
+import 'tippy.js/animations/scale.css';
 
-import {
-	Button,
-	Card,
-	Checkbox,
-	FileInput,
-	FlexLayout,
-	Select,
-	Textarea,
-} from './ui';
-import { getAnnotations } from '../nlp';
-
-function getInferredContentType(file) {
-	const extension = file.name.split('.').pop();
-	switch (extension) {
-		case 'htm':
-		case 'html':
-			return 'html';
-		case 'md':
-		case 'markdown':
-			return 'markdown';
-		default:
-			return 'text';
-	}
-}
-
-const contentTypeOptions = [
-	{ value: 'html', label: 'html' },
-	{ value: 'markdown', label: 'markdown' },
-	{ value: 'text', label: 'text' },
-];
+import { Button, Card, Checkbox, FileInput, Flex, Textarea } from './ui';
 
 const contentStyles = {
-	overflow: 'auto',
-	mozTabSize: '2',
-	scrollbarWidth: 'thin',
-	tabSize: '2',
-	whiteSpace: 'pre-wrap',
+  overflow: 'auto',
+  mozTabSize: '2',
+  scrollbarWidth: 'thin',
+  tabSize: '2',
+  whiteSpace: 'pre-wrap',
 };
 
 export default function Content({ content, selectedWord, onUpdate }) {
-	const [draftContent, setDraftContent] = useState(content);
-	const [contentType, setContentType] = useState('html');
-	const [showPreview, setShowPreview] = useState(false);
+  const [draftContent, setDraftContent] = useState(content);
+  const [filename, setFilename] = useState('doc.html');
+  const [showPreview, setShowPreview] = useState(false);
 
-	const annotations = useMemo(() => {
-		return getAnnotations(content, selectedWord);
-	}, [content, selectedWord]);
+  const doc = useMemo(() => {
+    let marks = [];
+    if (selectedWord) {
+      marks = Doc({ content, filename })
+        .search(selectedWord)
+        .map((result) => ({
+          ...result,
+          id: uuidv4(),
+        }));
+    }
 
-	useEffect(() => {
-		setShowPreview(true);
-	}, [selectedWord]);
+    return Doc({
+      compiler: [[rehype2react, { createElement }]],
+      content,
+      filename,
+      marks,
+      prePlugins: [[highlight, { ignoreMissing: true }]],
+      sanitizeSchema: null,
+    });
+  }, [content, filename, selectedWord]);
 
-	useEffect(() => {
-		window.location.hash = annotations.length > 0 ? annotations[0].id : '';
-	}, [annotations]);
+  useEffect(() => {
+    setShowPreview(true);
+  }, [selectedWord]);
 
-	function handleUploadFile(event) {
-		const file = event.target.files[0];
-		file.text().then((fileContent) => {
-			setDraftContent(fileContent);
-			setContentType(getInferredContentType(file));
-			onUpdate(fileContent);
-		});
-	}
+  function handleUploadFile(file) {
+    file.text().then((fileContent) => {
+      setDraftContent(fileContent);
+      setFilename(file.name);
+      onUpdate(fileContent);
+    });
+  }
 
-	function handleEditContent(event) {
-		setDraftContent(event.target.value);
-	}
+  function handleResetContent() {
+    setDraftContent(content);
+  }
 
-	function handleResetContent() {
-		setDraftContent(content);
-	}
+  function handleUpdateContent() {
+    onUpdate(draftContent);
+  }
 
-	function handleUpdateContent() {
-		onUpdate(draftContent);
-	}
+  const disabled = draftContent === content;
 
-	const disabled = draftContent === content;
-
-	return (
-		<FlexLayout flexDirection="column">
-			<FlexLayout alignItems="center" justifyContent="space-between">
-				<Checkbox
-					id="preview"
-					label="Preview"
-					value={showPreview}
-					onChange={setShowPreview}
-				/>
-				{showPreview ? (
-					<Select
-						id="content-type"
-						label="Content Type"
-						options={contentTypeOptions}
-						value={contentType}
-						onChange={setContentType}
-					/>
-				) : (
-					<FlexLayout>
-						<Button
-							disabled={disabled}
-							variant="secondary"
-							onClick={handleResetContent}>
-							Reset
-						</Button>
-						<Button disabled={disabled} onClick={handleUpdateContent}>
-							Update
-						</Button>
-					</FlexLayout>
-				)}
-			</FlexLayout>
-			<FileInput
-				id="upload-file"
-				label="Upload File"
-				onChange={handleUploadFile}
-			/>
-			{showPreview ? (
-				<Card
-					as={contentType === 'text' ? 'pre' : undefined}
-					sx={contentStyles}>
-					<Document
-						annotations={annotations}
-						content={content}
-						contentType={contentType}
-					/>
-				</Card>
-			) : (
-				<Textarea
-					rows={50}
-					sx={contentStyles}
-					value={draftContent}
-					onChange={handleEditContent}
-				/>
-			)}
-		</FlexLayout>
-	);
+  return (
+    <Flex flexDirection="column">
+      <Flex alignItems="center" justifyContent="space-between">
+        <Checkbox
+          id="preview"
+          label="Preview"
+          value={showPreview}
+          onChange={setShowPreview}
+        />
+        <Flex>
+          <Button
+            disabled={disabled}
+            variant="secondary"
+            onClick={handleResetContent}>
+            Reset
+          </Button>
+          <Button disabled={disabled} onClick={handleUpdateContent}>
+            Update
+          </Button>
+        </Flex>
+      </Flex>
+      <FileInput
+        id="upload-file"
+        label="Upload File"
+        onChange={handleUploadFile}
+      />
+      {showPreview ? (
+        <Card sx={contentStyles}>{doc.compile().result}</Card>
+      ) : (
+        <Textarea
+          rows={50}
+          sx={contentStyles}
+          value={draftContent}
+          onChange={setDraftContent}
+        />
+      )}
+    </Flex>
+  );
 }

@@ -7,10 +7,10 @@ import theme from './components/ui/theme';
 import './index.css';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<ThemeProvider theme={theme}>
-			<App />
-		</ThemeProvider>
-	</React.StrictMode>,
-	document.querySelector('#root'),
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.querySelector('#root'),
 );
